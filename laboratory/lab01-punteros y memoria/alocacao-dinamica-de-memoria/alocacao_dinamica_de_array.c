@@ -2,7 +2,7 @@
 #include <stdlib.h>  // contiene NULL, calloc, malloc, free
 
 
-// const indica que no queremos alterar el contenido del parámetro.
+// const indica que no queremos alterar el contenido del parametro.
 void imprimir_vector(const int vector[], int tamano_vector) { // se puede usar de esta forma *vector
     for (int i = 0; i < tamano_vector; i++) {
         printf("&vector[%d] = %p, vector[%d] = %d\n", i, &vector[i], i, vector[i]);
@@ -37,7 +37,7 @@ int main() {
     int tamano_vector = 5;
 
     // asignacion de un vector estatico (memoria Stack). 
-    printf(" --- ASIGNACIÓN ESTÁTICA DE VECTOR --- \n");
+    printf(" --- ASIGNACION ESTATICA DE VECTOR --- \n");
     
     //int vector_estatico[tamano_vector] = {30, 10, 50, 20, 40}; 
     int vector_estatico[tamano_vector]; 
