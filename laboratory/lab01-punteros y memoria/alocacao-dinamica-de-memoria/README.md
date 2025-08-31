@@ -1,1 +1,1 @@
-## Alocação Dinâmica de Memória
+## Asignación de memoria dinámica
