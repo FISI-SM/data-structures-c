@@ -1,45 +1,45 @@
 #include <stdio.h>
-#include <stdlib.h>  // contém o NULL, calloc, malloc, free
+#include <stdlib.h>  // contiene NULL, calloc, malloc, free
 
 
 int main() {
 
     /*
-    Alocação estática de memória.    
-    Toda varável e alocada na memória Stack. 
-    O espaço para as variáveis é alocado no início da execução e cada variável recebe um endereço de memória que 
-    se mantém até o final da execução quando o sistema operacional desaloca automaticamente. 
+    Asignación estática de memoria.    
+    Toda variable se aloca en la memoria Stack. 
+    El espacio para las variables se asigna al inicio de la ejecución y cada variable recibe una dirección de memoria que 
+    se mantiene hasta el final de la ejecución, cuando el sistema operativo desaloca automáticamente. 
   
-    Alocação dinâmica de memória
-    E feita na memória Heap. 
-    Alocação dinâmica de memória é o processo que aloca memória em tempo de execução.
-    É utilizada quando não se sabe previamente o quanto de memória será necessário para armazenar os dados. 
-    Conseguimos determinar o tamanho de memória a ser usado conforme a necessidade, evitando uso desnecessário de memória.           
+    Asignación dinámica de memoria
+    Se hace en la memoria Heap. 
+    La asignación dinámica de memoria es el proceso que asigna memoria en tiempo de ejecución.
+    Se utiliza cuando no se sabe previamente cuánta memoria será necesaria para almacenar los datos. 
+    Podemos determinar el tamaño de memoria a utilizar conforme a la necesidad, evitando el uso innecesario de memoria.           
    */ 
     
-    //alocação estática na (memória Stack). 
-    printf(" --- ALOCAÇÃO ESTÁTICA --- \n");
+    //asignación estática en la (memoria Stack). 
+    printf(" --- ASIGNACION ESTATICA --- \n");
     int a = 30; 
     printf("&a = %p, a = %d \n\n", &a, a);
 
 
-    //alocação dinâmica na (memória Heap) com funçõa malloc
-    printf(" --- ALOCAÇÃO DINÂMICA USANDO FUNÇÃO (malloc) --- \n");
-    int *b = malloc(1 * sizeof(int)); // malloc não incializa o espaço alocado. Todos os elementos possuem lixo de memória.
+    //asignación dinámica en la (memoria Heap) con la función malloc
+    printf(" --- ASIGNACION DINAMICA USANDO LA FUNCION (malloc) --- \n");
+    int *b = malloc(1 * sizeof(int)); // malloc no inicializa el espacio asignado. Todos los elementos tienen basura de memoria.
     *b = 20; 
     printf("&b = %p | b = %p | *b = %d \n", &b, b, *b);
-    free(b); //desaloca/libera endereço da memória Heap. A função free() informa o sistema operacional que nosso programa não vai mais usar aquele endereço. 
+    free(b); //desasigna/libera la dirección de la memoria Heap. La función free() informa al sistema operativo que nuestro programa ya no usará esa dirección. 
     printf("&b = %p | b = %p | *b = %d \n", &b, b, *b);  
-    b = NULL; // boa prática de programação
-    printf("&b = %p | b = %p \n\n", &b, b); // Se tentar acessar o conteúdo ( *b ) retorna erro, por que o ponteiro b não guarda mais nenhum endereço. 
+    b = NULL; // buena práctica de programación
+    printf("&b = %p | b = %p \n\n", &b, b); // Si intentas acceder al contenido ( *b ) retorna error, porque el puntero b ya no guarda ninguna dirección. 
 
 
-     //alocação dinâmica na (memória Heap) com função calloc
-    printf(" --- ALOCAÇÃO DINÂMICA USANDO FUNÇÃO (calloc) --- \n" );
-    int *c = calloc(1, sizeof(int)); // calloc incializa o espaço alocado.
+     //asignación dinámica en la (memoria Heap) con la función calloc
+    printf(" --- ASIGNACION DINAMICA USANDO LA FUNCION (calloc) --- \n" );
+    int *c = calloc(1, sizeof(int)); // calloc inicializa el espacio asignado.
     *c = 50; 
     printf("&c = %p | c = %p | *c = %d \n", &c, c, *c);
-    free(c); //desaloca/libera endereço da memória Heap 
+    free(c); //desasigna/libera la dirección de la memoria Heap 
     c = NULL;
     printf("&c = %p | c = %p \n\n", &c, c);
     
