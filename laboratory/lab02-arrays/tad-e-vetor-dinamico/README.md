@@ -1,44 +1,42 @@
-## Estrutura de Dados
+## Estructura de Datos
 
-Estrutura de Dados é a forma de armazenar e organizar os dados na memoria de um computador de modo que possam ser usados de forma eficiente. Elas podem ser
-homogêneas ou heterogêneas.
+La **Estructura de Datos** es la forma de almacenar y organizar los datos en la memoria de un computador de modo que puedan ser utilizados de forma eficiente. Pueden ser homogéneas o heterogéneas.
 
-As homogêneas são conjuntos formados por dados do mesmo tipos: Vetores, Matrizes e Strings.
+Las **homogéneas** son conjuntos formados por datos del mismo tipo: Vectores, Matrices y Cadenas de caracteres.
 
-As heterogêneas são conjuntos formados por tipos de dados diferentes: Registros (Structs).
+Las **heterogéneas** son conjuntos formados por tipos de datos diferentes: Registros (Estructuras).
 
 ---
 
-## TAD - Tipo Abstrato de Dados
+## TAD - Tipo Abstracto de Datos
 
-Um Tipo Abstrato de Dados, ou TAD, é um conjunto de dados estruturados e as operações que podem ser executadas sobre esses dados.
+Un **Tipo Abstracto de Datos**, o **TAD**, es un conjunto de datos estructurados y las operaciones que pueden ser ejecutadas sobre esos datos.
 
-Os dados armazenados podem ser manipulados apenas pelas operações/métodos. 
+Los datos almacenados pueden ser manipulados solo por las operaciones/métodos.
 
-Vantagens: 
-- Ocultamento dos detalhes de representação e implementação, apenas funcionalidades são conhecidas;
-- Encapsulamento: Implementação é ocultada, fornece somente interface/operações possíveis do TAD;
-- Seguraça: Acesso somente às interface/operações, e não diretamente aos dados;
-- Reutilização e flexibilidade: TAD pode ser usado em diferentes aplicações.
+### Ventajas:
+- Ocultamiento de los detalles de representación e implementación, solo las funcionalidades son conocidas;
+- **Encapsulamiento**: La implementación es oculta, solo proporciona la interfaz/operaciones posibles del TAD;
+- **Seguridad**: Acceso solo a las interfaces/operaciones, y no directamente a los datos;
+- **Reutilización y flexibilidad**: El TAD puede ser usado en diferentes aplicaciones.
 
-Operações mais comuns utilizadas são:
-- Criação da estrutura;
-- Inclusão/Atualização de um elemento;
-- Busca de um elemento;
-- Remoção de um elemento.
-- Destruição da estrutura;
+### Operaciones más comunes utilizadas:
+- Creación de la estructura;
+- Inclusión/Actualización de un elemento;
+- Búsqueda de un elemento;
+- Eliminación de un elemento;
+- Destrucción de la estructura;
 
-Modularização: 
-- Por convenção os TADs são construídos em arquivos separados. Utilizam-se arquivos de cabeçalho (.h) e de código fonte (.c) para modularizar; 
-- O arquivo de cabeçalho e de código fonte devem ter o mesmo nome, alterando apenas a extensão. vetor_dinamico.h e vetor_dinamico.c;
-- Possibilidade de “esconder” a implementação de quem usa o TAD;
-- Quem utiliza o TAD precisa conhecer apenas as funcionalidades que ele implementa; 
-- Arquivo .h: definiçao dos novos tipos de dados, protótipos das funções e variáveis globais;
-- Arquivo .c: declaração dos novos tipos de dados e implementação das funções.
-
+### Modularización:
+- Por convención, los TADs son construidos en archivos separados. Se utilizan archivos de cabecera (.h) y de código fuente (.c) para modularizar;
+- El archivo de cabecera y el archivo de código fuente deben tener el mismo nombre, cambiando solo la extensión. `vector_dinamico.h` y `vector_dinamico.c`;
+- Posibilidad de "ocultar" la implementación de quienes usan el TAD;
+- Quienes utilizan el TAD solo necesitan conocer las funcionalidades que implementa;
+- Archivo .h: definición de los nuevos tipos de datos, prototipos de las funciones y variables globales;
+- Archivo .c: declaración de los nuevos tipos de datos e implementación de las funciones.
 
 ![TAD](https://github.com/edersonschmeing/estrutura-de-dados-em-c-1/blob/main/tad-e-vetor-dinamico/tad.png)
 
-<!-- ### Padrões Criacionais
+<!-- ### Patrones Creacionales
 
 #### - Factory Method -->
