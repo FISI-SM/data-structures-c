@@ -58,7 +58,7 @@ int main() {
 
     printf("\n --- VECTOR DE PUNTEROS A ESTRUCTURAS --- \n");
 
-    printf("Informe la cantidad de elementos: ");
+    printf("Ingrese la cantidad de elementos: ");
     scanf("%d", &tamano_vector);
       
     Persona** vector = crear_vector_dinamico(tamano_vector);
