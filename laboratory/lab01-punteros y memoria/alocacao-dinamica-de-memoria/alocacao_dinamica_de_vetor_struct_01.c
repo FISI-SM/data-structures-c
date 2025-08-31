@@ -1,72 +1,70 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>  // contém o NULL, calloc, malloc, free
+#include <stdlib.h>  // contiene NULL, calloc, malloc, free
 
 int main() {
    
-   typedef struct pessoa {
-        char nome[30];
-        int idade;
-   } Pessoa;  
+   typedef struct persona {
+        char nombre[30];
+        int edad;
+   } Persona;  
  
 
-   printf(" --- ALOCAÇÃO DINÂMICA DE PONTEIRO DE PONTEIRO DE STRUCT--- \n");
+   printf(" --- ASIGNACION DINAMICA DE PUNTERO DE PUNTERO DE ESTRUCTURA--- \n");
     
-   Pessoa *pessoa_dinamica = (Pessoa*) malloc(1 * sizeof(Pessoa));
-   Pessoa *pessoa_dinamica1 = (Pessoa*) malloc(1 * sizeof(Pessoa));
-   Pessoa *pessoa_dinamica2 = (Pessoa*) malloc(1 * sizeof(Pessoa));
+   Persona *persona_dinamica = (Persona*) malloc(1 * sizeof(Persona));
+   Persona *persona_dinamica1 = (Persona*) malloc(1 * sizeof(Persona));
+   Persona *persona_dinamica2 = (Persona*) malloc(1 * sizeof(Persona));
 
-   strcpy(pessoa_dinamica->nome, "Ederson Schmeing");
-   pessoa_dinamica->idade = 38;
+   strcpy(persona_dinamica->nombre, "Ederson Schmeing");
+   persona_dinamica->edad = 38;
 
-   strcpy(pessoa_dinamica1->nome, "Anderson");
-   pessoa_dinamica1->idade = 41;
+   strcpy(persona_dinamica1->nombre, "Anderson");
+   persona_dinamica1->edad = 41;
 
-   strcpy(pessoa_dinamica2->nome, "Isabela");
-   pessoa_dinamica2->idade = 37;
+   strcpy(persona_dinamica2->nombre, "Isabela");
+   persona_dinamica2->edad = 37;
 
   
-   //ALOCA UM VETOR DE PONTEIROS DE STRUCT NA HEAP
-   Pessoa **vetor = (Pessoa**) malloc(10 * sizeof(Pessoa*));     
+   //ASIGNA UN VECTORIZADO DE PUNTEROS DE ESTRUCTURA EN EL MONTON
+   Persona **vector = (Persona**) malloc(10 * sizeof(Persona*));     
 
-   vetor[0] = pessoa_dinamica;
-   vetor[1] = pessoa_dinamica1;
-   *(vetor + 2) = pessoa_dinamica2;
-   //vetor[2] = pessoa_dinamica2;
+   vector[0] = persona_dinamica;
+   vector[1] = persona_dinamica1;
+   *(vector + 2) = persona_dinamica2;
+   //vector[2] = persona_dinamica2;
 
 
    for (int i = 0; i < 10; i++ ) {
-      printf("&vetor = %p | end struct = %ld | end struct = %p \n", &vetor, &vetor[i], vetor[i]);  
+      printf("&vector = %p | direccion de struct = %ld | direccion de struct = %p \n", &vector, &vector[i], vector[i]);  
    }
 
-   Pessoa *pessoa_0 = vetor[0];
-   Pessoa *pessoa_1 = vetor[1];
-   Pessoa *pessoa_2 = vetor[2];
+   Persona *persona_0 = vector[0];
+   Persona *persona_1 = vector[1];
+   Persona *persona_2 = vector[2];
 
 
 
-
- //dessa forma o vetor ta na stack e a struct na heap.
-   Pessoa *v[10];
-   v[0] = pessoa_dinamica;
+ //De esta forma el vector está en la pila y la estructura en el montón.
+   Persona *v[10];
+   v[0] = persona_dinamica;
    
 
-   //DESALOCA MEMORIA
-   free(pessoa_dinamica);
-   pessoa_dinamica = NULL;
+   //DESASIGNA MEMORIA
+   free(persona_dinamica);
+   persona_dinamica = NULL;
    
-   free(pessoa_dinamica1);
-   pessoa_dinamica1 = NULL;
+   free(persona_dinamica1);
+   persona_dinamica1 = NULL;
    
-   free(pessoa_dinamica2);
-   pessoa_dinamica2 = NULL;
+   free(persona_dinamica2);
+   persona_dinamica2 = NULL;
    
-   free(vetor); 
-   vetor = NULL;
+   free(vector); 
+   vector = NULL;
    
-   //TESTAR SEM COMENTÁRIO. 
-   //Pessoa *p = vetor[0];
+   //PROBAR SIN COMENTARIO. 
+   //Persona *p = vector[0];
    
    return 0;
-
 }
