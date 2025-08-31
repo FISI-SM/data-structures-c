@@ -2,35 +2,34 @@
 
 int main() {
 
-    typedef struct data {
+    typedef struct fecha {
         int dia;
         int mes;
-        int ano;    
-    } Data;
+        int anio;    
+    } Fecha;
     
-    Data data_atual; 
+    Fecha fecha_actual; 
     
-    data_atual.dia = 6;
-    data_atual.mes = 3;
-    data_atual.ano = 2023; 
+    fecha_actual.dia = 6;
+    fecha_actual.mes = 3;
+    fecha_actual.anio = 2023; 
 
-    printf("A data atual é %d/%d/%d \n\n", data_atual.dia, data_atual.mes, data_atual.ano);
+    printf("La fecha actual es %d/%d/%d \n\n", fecha_actual.dia, fecha_actual.mes, fecha_actual.anio);
 
-    Data *p = NULL; 
+    Fecha *p = NULL; 
     
-    p = &data_atual;
+    p = &fecha_actual;
 
     p->dia = 10;
     p->mes = 04; 
-    p->ano = 2024;
+    p->anio = 2024;
 
-    printf("A data atual é %d/%d/%d \n\n", p->dia, p->mes, p->ano);
+    printf("La fecha actual es %d/%d/%d \n\n", p->dia, p->mes, p->anio);
 
     (*p).dia = 20; 
     (*p).mes = 05;
-    (*p).ano = 2025;
+    (*p).anio = 2025;
 
-    printf("A data atual é %d/%d/%d \n\n", (*p).dia, (*p).mes, (*p).ano);
-
+    printf("La fecha actual es %d/%d/%d \n\n", (*p).dia, (*p).mes, (*p).anio);
 
 }
