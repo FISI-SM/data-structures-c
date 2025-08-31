@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 int main() {
 
     int mat[3][3] = {
@@ -24,7 +23,7 @@ int main() {
 
     printf("\n");
     
-    // declara um ponteiro que recebe o endereço de memória da primeira posição da matriz.
+    // declara un puntero que recibe la direccion de memoria de la primera posicion de la matriz.
     int *p = &mat[0][0];
     printf("p = %p \n", p);
     
@@ -33,7 +32,6 @@ int main() {
     }
 
     printf("\n");
-
-     
+    
     return 0;
 }
