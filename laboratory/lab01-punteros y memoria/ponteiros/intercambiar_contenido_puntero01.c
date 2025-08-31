@@ -12,6 +12,5 @@ int main() {
     printf("&a = %p | a = %d\n", &a, a);
     printf("&p = %p | p = %p\n\n", &p, p);
 
-
     return 0;
 }
