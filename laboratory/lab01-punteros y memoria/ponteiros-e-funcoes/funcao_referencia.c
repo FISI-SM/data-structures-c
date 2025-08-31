@@ -2,8 +2,8 @@
 
 //Ejemplo de funciones con paso de parametros por referencia
 
-//void troca(const int *valor_x, int *valor_y) { la palabra reservada const indica que la variable es solo de lectura.
-void troca(int *valor_x, int *valor_y) {
+//void cambio(const int *valor_x, int *valor_y) { la palabra reservada const indica que la variable es solo de lectura.
+void cambio(int *valor_x, int *valor_y) {
    
     int valor_a;
     
@@ -34,7 +34,7 @@ int main() {
    printf("&valor_a = %p | valor_a = %d\n", &valor_a, valor_a);
    printf("&valor_b = %p | valor_b = %d\n\n", &valor_b, valor_b);
 
-   troca(&valor_a, &valor_b);
+   cambio(&valor_a, &valor_b);
 
    printf("### DESPUES DE LLAMAR A LA FUNCION ### \n");
    printf("&valor_a = %p | valor_a = %d\n", &valor_a, valor_a);
