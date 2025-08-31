@@ -43,7 +43,7 @@ int main() {
    Persona *persona_1 = vector[1];
    Persona *persona_2 = vector[2];
 
- //De esta forma el vector está en la pila y la estructura en el montón.
+ //De esta forma el vector esta en la pila y la estructura en el monton.
    Persona *v[10];
    v[0] = persona_dinamica;
    
