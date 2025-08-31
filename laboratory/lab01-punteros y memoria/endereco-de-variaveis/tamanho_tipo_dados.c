@@ -4,13 +4,13 @@ int main() {
     
     int a;
 
-    //tamanho de variáveis
+    // tamaño de variables
     printf("sizeof(a)      = %ld bytes\n", sizeof(a));
     
-    unsigned long tamanho_a = sizeof(a);
-    printf("tamanho_a      = %ld bytes\n\n", tamanho_a);
+    unsigned long tamano_a = sizeof(a);
+    printf("tamano_a      = %ld bytes\n\n", tamano_a);
 
-    //tamanho dos tipos de dados
+    // tamaño de los tipos de datos
     printf("sizeof(char)   = %ld bytes\n", sizeof(char));
     printf("sizeof(int)    = %ld bytes\n", sizeof(int));
 
@@ -20,8 +20,8 @@ int main() {
     printf("sizeof(long)   = %ld bytes\n", sizeof(long));
     printf("sizeof(unsigned long) = %ld bytes\n\n", sizeof(unsigned long));
   
-    // tamanho de ponteiros. 
-    // ponteiros guardam endereços de memória e os endereços são empre do mesmo tamanho.
+    // tamaño de punteros. 
+    // los punteros guardan direcciones de memoria y las direcciones son siempre del mismo tamaño.
     printf("sizeof(void *)  = %ld bytes\n", sizeof(void *));
     printf("sizeof(char *)  = %ld bytes\n", sizeof(char *));
     printf("sizeof(int *)   = %ld bytes\n", sizeof(int *));
