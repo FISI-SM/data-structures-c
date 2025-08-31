@@ -78,7 +78,7 @@ void prueba_vector_no_ordenado() {
    printf("tamano del vector: %d\n", tamano_vector_dinamico(vector_dinamico));
    printf("cantidad: %d \n\n", cantidad_vector_dinamico(vector_dinamico));
 
-   printf("añadidos 16 elementos\n");
+   printf("anadidos 16 elementos\n");
    for (int i = 0; i < 16; i++)
       anadir_vector_dinamico(vector_dinamico, i*2);
 
@@ -145,13 +145,13 @@ void prueba_vector_ordenado() {
    printf("cantidad: %d \n\n", cantidad_vector_dinamico(vector_dinamico));
 
    int index = buscar_vector_dinamico(vector_dinamico, 9); 
-   printf("índice: %d\n", index);
+   printf("indice: %d\n", index);
    eliminar_vector_dinamico(vector_dinamico, index);
 
    imprimir_vector_dinamico(vector_dinamico);
 
    index = buscar_vector_dinamico(vector_dinamico, 13); 
-   printf("índice: %d\n", index);
+   printf("indice: %d\n", index);
    eliminar_vector_dinamico(vector_dinamico, index);
 
    imprimir_vector_dinamico(vector_dinamico);
