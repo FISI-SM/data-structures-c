@@ -40,20 +40,20 @@ int main() {
     printf("\n --- MULTIPLICACION DE ESCALAR POR VECTOR --- \n");
 
     printf("Ingrese la cantidad de elementos: ");
-    scanf("%d", &tamaño_vector);
+    scanf("%d", &tamano_vector);
      
     printf("Ingrese el numero escalar para hacer la multiplicacion: ");
     scanf("%d", &numero_escalar);
 
-    int *vector_dinamico = (int *) malloc(tamaño_vector * sizeof(int));
+    int *vector_dinamico = (int *) malloc(tamano_vector * sizeof(int));
 
-    llenar_vector(vector_dinamico, tamaño_vector);
+    llenar_vector(vector_dinamico, tamano_vector);
     printf("\n --- ELEMENTOS INFORMADOS --- \n");
-    imprimir_vector(vector_dinamico, tamaño_vector);
+    imprimir_vector(vector_dinamico, tamano_vector);
     
     multiplica_vector_con_escalar(vector_dinamico, tamano_vector, numero_escalar);
     printf("\n --- ELEMENTOS DESPUES DE LA OPERACION --- \n");
-    imprimir_vector(vector_dinamico, tamaño_vector);
+    imprimir_vector(vector_dinamico, tamano_vector);
  
     //free(vector_dinamico);
     desalojar_vector(&vector_dinamico);
