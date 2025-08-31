@@ -10,7 +10,7 @@ int main() {
    } Persona;  
  
 
-   printf(" --- ASIGNACION DINAMICA DE PUNTERO DE PUNTERO DE ESTRUCTURA--- \n");
+   printf(" --- ASIGNACION DINAMICA DE PUNTERO DE PUNTERO DE ESTRUCTURA --- \n");
     
    Persona *persona_dinamica = (Persona*) malloc(1 * sizeof(Persona));
    Persona *persona_dinamica1 = (Persona*) malloc(1 * sizeof(Persona));
@@ -45,7 +45,7 @@ int main() {
 
 
 
- //De esta forma el vector está en la pila y la estructura en el montón.
+ //De esta forma el vector esta en la pila y la estructura en el monton.
    Persona *v[10];
    v[0] = persona_dinamica;
    
