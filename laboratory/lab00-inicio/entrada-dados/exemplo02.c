@@ -2,24 +2,24 @@
 #include <stdlib.h>
 
 
-char *leia_texto() { 
+char *leer_texto() { 
 
     char *texto = NULL;
-    char caracter_atual;
-    int tamanho_texto = 0;
+    char caracter_actual;
+    int tamanio_texto = 0;
 
     do {
 
          scanf("%c", &caracter_atual);
-         tamanho_texto++;
-         texto = (char*) realloc(texto, tamanho_texto * sizeof(char));
+         tamanio_texto++;
+         texto = (char*) realloc(texto, tamanio_texto * sizeof(char));
         
-         if (caracter_atual != '\n')
-            texto[tamanho_texto-1] = caracter_atual;
+         if (caracter_actual != '\n')
+            texto[tamanio_texto-1] = caracter_actual;
          else 
-            texto[tamanho_texto-1] = '\0';
+            texto[tamanio_texto-1] = '\0';
 
-    } while (caracter_atual != '\n');
+    } while (caracter_actual != '\n');
     
 
     return texto;
@@ -29,9 +29,9 @@ char *leia_texto() {
 int main() {
     
     char *texto;
-    int tamanho_texto;
+    int tamanio_texto;
 
-    texto = leia_texto();
+    texto = leer_texto();
 
     printf("\n%s\n", texto);
 
