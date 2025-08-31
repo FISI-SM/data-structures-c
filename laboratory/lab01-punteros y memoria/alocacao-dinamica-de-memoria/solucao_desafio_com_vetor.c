@@ -1,63 +1,62 @@
 #include <stdio.h>
-#include <stdlib.h>  // contém o NULL, calloc, malloc, free
+#include <stdlib.h>  // contiene NULL, calloc, malloc, free
 
-//const indica que não queremos alterar o conteúdo do parâmetro.
-void imprimir_vetor(const int vetor[], int tamanho_vetor) { // pode ser usado dessa forma *vetor
-    for (int i = 0; i < tamanho_vetor; i++) {
-        printf("&vetor[%d] = %p, vetor[%d] = %d\n", i, &vetor[i], i, vetor[i]);
-        // vetor[i]++ 
+//const indica que no queremos alterar el contenido del parámetro.
+void imprimir_vector(const int vector[], int tamano_vector) { // puede ser usado de esta forma *vector
+    for (int i = 0; i < tamano_vector; i++) {
+        printf("&vector[%d] = %p, vector[%d] = %d\n", i, &vector[i], i, vector[i]);
+        // vector[i]++ 
     }
     printf("\n");
 }
 
-void preencher_vetor(int vetor[], int tamanho_vetor ) {
+void llenar_vector(int vector[], int tamano_vector) {
     int elemento;
-    for (int i = 0; i < tamanho_vetor; i++) {
-        printf("Informe o elemento número %d: ", i+1);
-        //scanf("%d", &vetor[i]);
+    for (int i = 0; i < tamano_vector; i++) {
+        printf("Ingrese el elemento numero %d: ", i+1);
+        //scanf("%d", &vector[i]);
         scanf("%d", &elemento);
-        vetor[i] = elemento;
+        vector[i] = elemento;
     }
 }
 
-void multiplica_vetor_com_escalar(int vetor[], int tamanho_vetor, int escalar) { //*vetor
-    for (int i = 0; i < tamanho_vetor; i++) {
-        vetor[i] *= escalar;
+void multiplica_vector_con_escalar(int vector[], int tamano_vector, int escalar) { //*vector
+    for (int i = 0; i < tamano_vector; i++) {
+        vector[i] *= escalar;
     }
 }
 
-void desalocar_vetor(int **endereco_vetor) {
-    int *vetor = *endereco_vetor;
-    free(vetor);
-    *endereco_vetor = NULL;
+void desalojar_vector(int **direccion_vector) {
+    int *vector = *direccion_vector;
+    free(vector);
+    *direccion_vector = NULL;
 }
 
 int main() {
 
-    int tamanho_vetor;
+    int tamano_vector;
     int numero_escalar;
 
-    printf("\n --- MULTIPLICAÇÃO DE ESCALAR POR VETOR --- \n");
+    printf("\n --- MULTIPLICACION DE ESCALAR POR VECTOR --- \n");
 
-    printf("Informe a quantidade de elementos: ");
-    scanf("%d", &tamanho_vetor);
+    printf("Ingrese la cantidad de elementos: ");
+    scanf("%d", &tamaño_vector);
      
-    printf("Informe o número escalar para fazer a multiplicação: ");
+    printf("Ingrese el numero escalar para hacer la multiplicacion: ");
     scanf("%d", &numero_escalar);
 
-    int *vetor_dinamico = (int *) malloc(tamanho_vetor * sizeof(int));
+    int *vector_dinamico = (int *) malloc(tamaño_vector * sizeof(int));
 
-    preencher_vetor(vetor_dinamico, tamanho_vetor);
+    llenar_vector(vector_dinamico, tamaño_vector);
     printf("\n --- ELEMENTOS INFORMADOS --- \n");
-    imprimir_vetor(vetor_dinamico, tamanho_vetor);
+    imprimir_vector(vector_dinamico, tamaño_vector);
     
-    multiplica_vetor_com_escalar(vetor_dinamico, tamanho_vetor, numero_escalar);
-    printf("\n --- ELEMENTOS DEPOIS DA OPERAÇÃO --- \n");
-    imprimir_vetor(vetor_dinamico, tamanho_vetor);
+    multiplica_vector_con_escalar(vector_dinamico, tamano_vector, numero_escalar);
+    printf("\n --- ELEMENTOS DESPUES DE LA OPERACION --- \n");
+    imprimir_vector(vector_dinamico, tamaño_vector);
  
-    //free(vetor_dinamico);
-    desalocar_vetor(&vetor_dinamico);
-
+    //free(vector_dinamico);
+    desalojar_vector(&vector_dinamico);
  
     return 0;
 }
