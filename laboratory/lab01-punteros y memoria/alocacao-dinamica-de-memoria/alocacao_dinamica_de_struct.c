@@ -1,42 +1,41 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>  // contém o NULL, calloc, malloc, free
+#include <stdlib.h>  // contiene NULL, calloc, malloc, free
 
 int main() {
    
-   typedef struct pessoa {
-        char nome[30];
-        int idade;
-   } Pessoa;  
+   typedef struct persona {
+        char nombre[30];
+        int edad;
+   } Persona;  
     
-   printf(" --- ALOCAÇÃO ESTÁTICA DE STRUCT --- \n");
-   Pessoa pessoa_estatica; 
+   printf(" --- ASIGNACION ESTATICA DE ESTRUCTURA --- \n");
+   Persona persona_estatica; 
 
-   strcpy(pessoa_estatica.nome, "Ederson Schmeing");
-   pessoa_estatica.idade = 38;
+   strcpy(persona_estatica.nombre, "Ederson Schmeing");
+   persona_estatica.edad = 38;
 
-   printf("Nome: %s \n", pessoa_estatica.nome);
-   printf("Idade: %d \n\n", pessoa_estatica.idade);
+   printf("Nombre: %s \n", persona_estatica.nombre);
+   printf("Edad: %d \n\n", persona_estatica.edad);
 
 
-   printf(" --- ALOCAÇÃO DINÂMICA DE STRUCT --- \n");
-   Pessoa *pessoa_dinamica = (Pessoa*) malloc(1 * sizeof(Pessoa));
+   printf(" --- ASIGNACION DINAMICA DE ESTRUCTURA --- \n");
+   Persona *persona_dinamica = (Persona*) malloc(1 * sizeof(Persona));
 
-   strcpy(pessoa_dinamica->nome, "Ederson");
-   pessoa_dinamica->idade = 3;
+   strcpy(persona_dinamica->nombre, "Ederson");
+   persona_dinamica->edad = 3;
 
-   printf("Nome: %s \n", pessoa_dinamica->nome);
-   printf("Idade: %d \n\n", pessoa_dinamica->idade);
+   printf("Nombre: %s \n", persona_dinamica->nombre);
+   printf("Edad: %d \n\n", persona_dinamica->edad);
 
-   strcpy((*pessoa_dinamica).nome, "Schmeing");
-   (*pessoa_dinamica).idade = 8;
+   strcpy((*persona_dinamica).nombre, "Schmeing");
+   (*persona_dinamica).edad = 8;
 
-   printf("Nome: %s \n", (*pessoa_dinamica).nome);
-   printf("Idade: %d \n\n",(*pessoa_dinamica).idade);
+   printf("Nombre: %s \n", (*persona_dinamica).nombre);
+   printf("Edad: %d \n\n",(*persona_dinamica).edad);
 
-   free(pessoa_dinamica);
-   pessoa_dinamica = NULL;
+   free(persona_dinamica);
+   persona_dinamica = NULL;
  
    return 0;
-
 }
