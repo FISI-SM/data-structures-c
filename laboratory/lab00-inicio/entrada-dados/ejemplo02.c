@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 char *leer_texto() { 
 
     char *texto = NULL;
@@ -20,11 +19,9 @@ char *leer_texto() {
             texto[tamano_texto-1] = '\0';
 
     } while (caracter_actual != '\n');
-    
 
     return texto;
 }
-
 
 int main() {
     
