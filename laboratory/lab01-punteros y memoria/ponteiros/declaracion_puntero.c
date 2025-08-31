@@ -12,7 +12,6 @@ Las variables del tipo puntero ocupan 8 bytes, independientemente del tipo.
 
 */
 
-
 int main() {
     int *p = NULL;
     
@@ -25,7 +24,6 @@ int main() {
     // el puntero recibiendo una direccion cualquiera de memoria.
     p = 0x7ffd5e9698c1; 
     printf("&p = %p || p = %p \n", &p, p);
-   
     
  /*   int *p1 = 0xF;
     //decimal
