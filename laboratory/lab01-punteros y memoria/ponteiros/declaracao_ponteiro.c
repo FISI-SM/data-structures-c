@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 /*
-Ponteiros
+Punteros
 
-Um ponteiro (apontador) é um tipo especial de variável capaz de armazenar um endereço de memória. 
-Ele só poderá armazenar o endereço de memória do seu respectivo tipo de dado.
+Un puntero (apuntador) es un tipo especial de variable capaz de almacenar una direccion de memoria. 
+Solo podra almacenar la direccion de memoria de su respectivo tipo de dato.
 
-Para declaramos um variável ponteiro usamos o operador *. 
+Para declarar una variable puntero usamos el operador *. 
 
-As variáveis do tipo ponteiro ocupa 8 bytes, idependente do tipo. 
+Las variables del tipo puntero ocupan 8 bytes, independientemente del tipo. 
 
 */
 
@@ -17,12 +17,12 @@ int main() {
     int *p = NULL;
     
     if (p == NULL) {
-        printf("boa prática e inicializar os ponteiros.\n\n");
+        printf("Buena practica es inicializar los punteros.\n\n");
 
     } 
     printf("&p = %p || p = %p \n\n", &p, p);
     
-    // o ponteiro recebendo um enderço qualquer de memória.
+    // el puntero recibiendo una direccion cualquiera de memoria.
     p = 0x7ffd5e9698c1; 
     printf("&p = %p || p = %p \n", &p, p);
    
@@ -31,7 +31,7 @@ int main() {
     //decimal
     printf("&p1 = %p || p = %ld \n", &p1, p1);
 
-    // binário 
+    // binario 
     printf("&p1 = %p || p = %lb \n", &p1, p1);
 
     // hexadecimal 
