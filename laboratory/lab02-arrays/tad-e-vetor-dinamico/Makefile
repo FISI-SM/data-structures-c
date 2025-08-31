@@ -1,12 +1,12 @@
 all: app_main
 
-app_main: app_main.o vetor_dinamico.o  
-	gcc obj/app_main.o obj/vetor_dinamico.o -o bin/app_main.out	
+app_main: app_main.o vector_dinamico.o  
+	gcc obj/app_main.o obj/vector_dinamico.o -o bin/app_main.out	
 
-vetor_dinamico.o: src/vetor_dinamico.c include/vetor_dinamico.h
-	gcc -I include -Wall -Werror -c src/vetor_dinamico.c -o obj/vetor_dinamico.o
+vector_dinamico.o: src/vector_dinamico.c include/vector_dinamico.h
+	gcc -I include -Wall -Werror -c src/vector_dinamico.c -o obj/vector_dinamico.o
 
-app_main.o: apps/app_main.c include/vetor_dinamico.h
+app_main.o: apps/app_main.c include/vector_dinamico.h
 	gcc -I include -Wall -Werror -c apps/app_main.c -o obj/app_main.o
 
 run:
