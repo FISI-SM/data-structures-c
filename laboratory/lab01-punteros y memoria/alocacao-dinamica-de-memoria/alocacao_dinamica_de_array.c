@@ -1,71 +1,71 @@
 #include <stdio.h>
-#include <stdlib.h>  // contém o NULL, calloc, malloc, free
+#include <stdlib.h>  // contiene NULL, calloc, malloc, free
 
 
-//const indica que não queremos alterar o conteúdo do parâmetro.
-void imprimir_vetor(const int vetor[], int tamanho_vetor) { // pode ser usado dessa forma *vetor
-    for (int i = 0; i < tamanho_vetor; i++) {
-        printf("&vetor[%d] = %p, vetor[%d] = %d\n", i, &vetor[i], i, vetor[i]);
-        // vetor[i]++ 
+// const indica que no queremos alterar el contenido del parámetro.
+void imprimir_vector(const int vector[], int tamano_vector) { // se puede usar de esta forma *vector
+    for (int i = 0; i < tamano_vector; i++) {
+        printf("&vector[%d] = %p, vector[%d] = %d\n", i, &vector[i], i, vector[i]);
+        // vector[i]++ 
     }
     printf("\n");
 }
 
-void preencher_vetor(int *vetor) { // pode ser usado dessa forma vetor[]
-    vetor[0] = 30;
-    vetor[1] = 10;
-    vetor[2] = 50;
-    vetor[3] = 20 ;
-    vetor[4] = 40;  
+void llenar_vector(int *vector) { // se puede usar de esta forma vector[]
+    vector[0] = 30;
+    vector[1] = 10;
+    vector[2] = 50;
+    vector[3] = 20 ;
+    vector[4] = 40;  
 }
 
-void soma_vetor_com_escalar(int vetor[], int tamanho_vetor, int escalar) { //*vetor
-    for (int i = 0; i < tamanho_vetor; i++) {
-        vetor[i] += escalar;
+void sumar_vector_con_escalar(int vector[], int tamano_vector, int escalar) { //*vector
+    for (int i = 0; i < tamano_vector; i++) {
+        vector[i] += escalar;
     }
 }
 
-void desalocar_vetor(int **endereco_vetor) {
-    int *vetor = *endereco_vetor;
-    free(vetor);
-    *endereco_vetor = NULL;
+void desalojar_vector(int **direccion_vector) {
+    int *vector = *direccion_vector;
+    free(vector);
+    *direccion_vector = NULL;
 }
 
 int main() {
 
-    //Toda varável e alocada na (memória Stack). 
-    int tamanho_vetor = 5;
+    // Toda variable se aloca en la (memoria Stack). 
+    int tamano_vector = 5;
 
-    // alocacao de um vetor estático (memória Stack). 
-    printf(" --- ALOCAÇÃO ESTÁTICA DE VETOR --- \n");
+    // asignacion de un vector estatico (memoria Stack). 
+    printf(" --- ASIGNACIÓN ESTÁTICA DE VECTOR --- \n");
     
-    //int vetor_estatico[tamanho_vetor] = {30, 10, 50, 20, 40}; 
-    int vetor_estatico[tamanho_vetor]; 
+    //int vector_estatico[tamano_vector] = {30, 10, 50, 20, 40}; 
+    int vector_estatico[tamano_vector]; 
     
-    preencher_vetor(vetor_estatico);
-    imprimir_vetor(vetor_estatico, tamanho_vetor);
-    soma_vetor_com_escalar(vetor_estatico, tamanho_vetor, 10);
-    imprimir_vetor(vetor_estatico, tamanho_vetor);
+    llenar_vector(vector_estatico);
+    imprimir_vector(vector_estatico, tamano_vector);
+    sumar_vector_con_escalar(vector_estatico, tamano_vector, 10);
+    imprimir_vector(vector_estatico, tamano_vector);
 
 
-    // alocacao de um vetor estático (memória Heap).  
-    printf("\n --- ALOCAÇÃO DINÂMICA DE VETOR --- \n");
-    int *vetor_dinamico = (int *) malloc(tamanho_vetor * sizeof(int));
+    // asignacion de un vector dinamico (memoria Heap).  
+    printf("\n --- ASIGNACION DINAMICA DE VECTOR --- \n");
+    int *vector_dinamico = (int *) malloc(tamano_vector * sizeof(int));
     
-    preencher_vetor(vetor_dinamico);
-    imprimir_vetor(vetor_dinamico, tamanho_vetor);
-    soma_vetor_com_escalar(vetor_dinamico, tamanho_vetor, 10);
-    imprimir_vetor(vetor_dinamico, tamanho_vetor);
+    llenar_vector(vector_dinamico);
+    imprimir_vector(vector_dinamico, tamano_vector);
+    sumar_vector_con_escalar(vector_dinamico, tamano_vector, 10);
+    imprimir_vector(vector_dinamico, tamano_vector);
 
-    printf("\n --- ANTES DE DESALOCAR VETOR DINÂMICO --- \n");
-    printf("&vetor_dinamico = %p, vetor_dinamico = %p\n\n", &vetor_dinamico, vetor_dinamico);
+    printf("\n --- ANTES DE DESALOJAR VECTOR DINAMICO --- \n");
+    printf("&vector_dinamico = %p, vector_dinamico = %p\n\n", &vector_dinamico, vector_dinamico);
     
-    //free(vetor_dinamico);
-    // vetor_dinamico = NULL;
-    desalocar_vetor(&vetor_dinamico);
+    //free(vector_dinamico);
+    // vector_dinamico = NULL;
+    desalojar_vector(&vector_dinamico);
 
-    printf("\n --- DEPOIS DE DESALOCAR VETOR DINÂMICO --- \n");
-    printf("&vetor_dinamico = %p, vetor_dinamico = %p\n\n", &vetor_dinamico, vetor_dinamico);
+    printf("\n --- DESPUES DE DESALOJAR VECTOR DINAMICO --- \n");
+    printf("&vector_dinamico = %p, vector_dinamico = %p\n\n", &vector_dinamico, vector_dinamico);
 
     return 0;
 }
