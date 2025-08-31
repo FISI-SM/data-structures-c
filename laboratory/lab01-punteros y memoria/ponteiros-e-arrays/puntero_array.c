@@ -15,7 +15,6 @@ int main() {
     printf("*vector  = %d \n", *vector);
     printf("*p       = %d \n\n", *p);
 
-   
     for (int i = 0;i < 5;i++){
        printf("&vector[%d] = %p | vector[%d] = %d \n", i, &vector[i], i, vector[i]);
        printf("p+%d     = %p | p+%d    = %d \n\n", i, p+i, i, *(p + i));
