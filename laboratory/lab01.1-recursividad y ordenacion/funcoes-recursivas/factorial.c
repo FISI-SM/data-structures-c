@@ -1,29 +1,29 @@
 #include <stdio.h>
 
-int fatorial(int valor){
+int factorial(int valor){
     
-    if(valor == 1 ){
+    if(valor == 1){
         return 1;
     }
 
     printf("%d * ", valor);
-    int fat = fatorial(valor - 1); 
+    int fat = factorial(valor - 1); 
     int resultado = valor * fat; 
     return resultado;  
 }
 
-// 5 * 4 * 3 * 2 * 1 => 5! é : 120
+// 5 * 4 * 3 * 2 * 1 => 5! es : 120
 
 int main() {
     
     int valor = 5;
 
-    //printf("Informe um valor: ");
+    //printf("Ingrese un valor: ");
     //scanf("%d", &valor);
     
-    int resultado = fatorial(valor);
+    int resultado = factorial(valor);
     printf("1 => ");
-    printf("%d! é : %d\n", valor, resultado);
+    printf("%d! es : %d\n", valor, resultado);
     return 0;
     
 }
