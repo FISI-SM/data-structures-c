@@ -6,18 +6,18 @@ char *leer_texto() {
 
     char *texto = NULL;
     char caracter_actual;
-    int tamanio_texto = 0;
+    int tamano_texto = 0;
 
     do {
 
          scanf("%c", &caracter_atual);
-         tamanio_texto++;
-         texto = (char*) realloc(texto, tamanio_texto * sizeof(char));
+         tamano_texto++;
+         texto = (char*) realloc(texto, tamano_texto * sizeof(char));
         
          if (caracter_actual != '\n')
-            texto[tamanio_texto-1] = caracter_actual;
+            texto[tamano_texto-1] = caracter_actual;
          else 
-            texto[tamanio_texto-1] = '\0';
+            texto[tamano_texto-1] = '\0';
 
     } while (caracter_actual != '\n');
     
@@ -29,7 +29,7 @@ char *leer_texto() {
 int main() {
     
     char *texto;
-    int tamanio_texto;
+    int tamano_texto;
 
     texto = leer_texto();
 
