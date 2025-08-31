@@ -8,7 +8,7 @@ int main() {
    char letra;
     
     do {
-         printf("Informe um valor: ");        
+         printf("Ingrese un valor: ");        
          retorno = scanf("%f", &valor);
          printf("Retorno: %d\n", retorno);
          
