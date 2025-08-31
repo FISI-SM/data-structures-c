@@ -11,7 +11,7 @@ int fibonacci(int valor){
 int main() {
 /*
     int valor;
-    printf("Informe um valor: ");
+    printf("Ingrese un valor: ");
     scanf("%d", &valor);
     printf("%d", fibonacci(valor));        
 */ 
