@@ -13,21 +13,21 @@ int main() {
     printf("&b[2] = %p | c = %d\n", &a[2], a[2]);
     printf("\n");
 
-    //endereço de memória da variável a
+    //direccion de memoria de la variable a
 
-    //posição inicial do vetor
+    //posicion inicial del vector
     printf("&p = %p | p = %p | p = %ld | *p = %d \n\a", &p, p, p, *p);
     
-    // avança 8 bytes por que é um ponteiro para int
+    // avanza 8 bytes porque es un puntero a int
     p = p + 2; 
     printf("&p = %p | p = %p | p = %ld | *p = %d \n", &p, p, p, *p);
 
-    // retorna 4 bytes por que é um ponteiro para int.
+    // retrocede 4 bytes porque es un puntero a int
     p--;  
-    // %ld formata em decimal 
+    // %ld formatea en decimal 
     printf("&p = %p | p = %p | p = %ld | *p = %d \n", &p, p, p, *p);
 
-    // avança 4 bytes por que é um ponteiro para int
+    // avanza 4 bytes porque es un puntero a int
     p++; 
     printf("&p = %p | p = %p | p = %ld | *p = %d \n", &p, p, p, *p);
 
