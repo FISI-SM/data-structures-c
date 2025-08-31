@@ -3,19 +3,19 @@
 #include <math.h>
 
 //============================================
-void printfVet(int *V  , int N){
+void printfVet(int *V, int N){
     int i;
     for(i = 0; i < N; i++)
         printf("%2d ",V[i]);
     printf("\n");
 }
 
-void printfLinha(){
+void printfLinea(){
     printf("----------------------------------------------\n");
 }
 //============================================
 
-int particiona(int *V, int inicio, int final ){
+int particionar(int *V, int inicio, int final){
     int esq, dir, pivo, aux;
     esq = inicio;
     dir = final;
@@ -42,7 +42,7 @@ int particiona(int *V, int inicio, int final ){
 void quickSort(int *V, int inicio, int fim) {
     int pivo;
     if(fim > inicio){
-        pivo = particiona(V, inicio, fim);
+        pivo = particionar(V, inicio, fim);
         quickSort(V, inicio, pivo-1);
         quickSort(V, pivo+1, fim);
     }
@@ -54,9 +54,9 @@ int main(){
     int vet[7] = {23,4,67,-8,90,54,21};
     int N = 7;
 
-    printf("Sem ordenar:\n");
+    printf("Sin ordenar:\n");
     printfVet(vet,N);
-    printfLinha();
+    printfLinea();
 
     quickSort(vet,0,N-1);//OK
     printf("Ordenado:\n");
