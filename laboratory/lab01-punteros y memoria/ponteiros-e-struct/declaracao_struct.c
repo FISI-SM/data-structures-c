@@ -4,40 +4,39 @@
 int main() {
 
    /*
-   Um struct é uma variável especial que contém diversas outras variáveis normalmente de tipos diferentes denominadas membros.
-   Um struct é alocado em uma sequência ordenada na memória. 
+   Una struct es una variable especial que contiene diversas otras variables normalmente de tipos diferentes denominadas miembros.
+   Una struct es asignada en una secuencia ordenada en la memoria. 
    */ 
 
-   struct endereco {
-        char rua[30];
+   struct direccion {
+        char calle[30];
         int numero;  
    };  
-   typedef struct endereco Endereco; 
+   typedef struct direccion Direccion; 
       
-   typedef struct pessoa {
-        char nome[30];
-        int idade;
-        struct endereco endereco1;
-        Endereco endereco2;
-   } Pessoa;  
+   typedef struct persona {
+        char nombre[30];
+        int edad;
+        struct direccion direccion1;
+        Direccion direccion2;
+   } Persona;  
    
-   Pessoa p; 
+   Persona p; 
 
-   strcpy(p.nome, "Ederson Schmeing");
-   p.idade = 38;
-   strcpy(p.endereco1.rua, "Rua Apalais");
-   p.endereco1.numero = 1413;
+   strcpy(p.nombre, "Ederson Schmeing");
+   p.edad = 38;
+   strcpy(p.direccion1.calle, "Calle Apalais");
+   p.direccion1.numero = 1413;
 
-   strcpy(p.endereco2.rua, "Rua Tito Muffato");
-   p.endereco2.numero = 2317 ;
+   strcpy(p.direccion2.calle, "Calle Tito Muffato");
+   p.direccion2.numero = 2317 ;
 
-   printf("Nome: %s \n", p.nome);
-   printf("Idade: %d \n", p.idade);
-   printf("Rua Endereço 1: %s \n", p.endereco1.rua);
-   printf("Número Endereço 1: %d \n", p.endereco1.numero);
-   printf("Rua Endereço 2: %s \n", p.endereco2.rua);
-   printf("Número Endereço 2: %d \n\n", p.endereco2.numero);
-   
+   printf("Nombre: %s \n", p.nombre);
+   printf("Edad: %d \n", p.edad);
+   printf("Calle Direccion 1: %s \n", p.direccion1.calle);
+   printf("Numero Direccion 1: %d \n", p.direccion1.numero);
+   printf("Calle Direccion 2: %s \n", p.direccion2.calle);
+   printf("Numero Direccion 2: %d \n\n", p.direccion2.numero);   
    
    return 0;
 
