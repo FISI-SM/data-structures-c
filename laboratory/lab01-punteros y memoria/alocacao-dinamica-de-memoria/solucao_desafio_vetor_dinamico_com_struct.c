@@ -1,74 +1,74 @@
 #include <stdio.h>
-#include <stdlib.h>  // contém o NULL, calloc, malloc, free
+#include <stdlib.h>  // contiene NULL, calloc, malloc, free
 
-typedef struct pessoa {
-    char nome[30];
-    int idade;
-} Pessoa; 
+typedef struct persona {
+    char nombre[30];
+    int edad;
+} Persona; 
 
-void imprimir_vetor(Pessoa **vetor, int tamanho_vetor )  { 
-    for (int i = 0; i < tamanho_vetor; i++) {
-        printf("&vetor[%d] = %p, vetor[%d].nome = %s\n", i, &vetor[i], i, vetor[i]->nome);
-        printf("&vetor[%d] = %p, vetor[%d].idade = %d\n", i, &vetor[i], i, vetor[i]->idade);
+void imprimir_vector(Persona **vector, int tamano_vector)  { 
+    for (int i = 0; i < tamano_vector; i++) {
+        printf("&vector[%d] = %p, vector[%d].nombre = %s\n", i, &vector[i], i, vector[i]->nombre);
+        printf("&vector[%d] = %p, vector[%d].edad = %d\n", i, &vector[i], i, vector[i]->edad);
         printf("\n");
     }
     printf("\n");
 }
 
-Pessoa* criar_pessoa(char nome[30], int idade ) {
-    Pessoa *pessoa_dinamica = (Pessoa*) malloc(1 * sizeof(Pessoa));
-    strcpy(pessoa_dinamica->nome, nome);
-    pessoa_dinamica->idade = idade;
-    return pessoa_dinamica;
+Persona* crear_persona(char nombre[30], int edad) {
+    Persona *persona_dinamica = (Persona*) malloc(1 * sizeof(Persona));
+    strcpy(persona_dinamica->nombre, nombre);
+    persona_dinamica->edad = edad;
+    return persona_dinamica;
 }
 
-void preencher_vetor(Pessoa **vetor, int tamanho_vetor ) {
-    int idade;
-    char nome[30];
-    for (int i = 0; i < tamanho_vetor; i++) {
-        printf("Informe o nome da pessoa %d: ", i + 1);
-        scanf("%s", &nome);
+void llenar_vector(Persona **vector, int tamano_vector) {
+    int edad;
+    char nombre[30];
+    for (int i = 0; i < tamano_vector; i++) {
+        printf("Ingrese el nombre de la persona %d: ", i + 1);
+        scanf("%s", &nombre);
         
-        printf("Informe a idade da pessoa %d: ", i + 1);
-        scanf("%d", &idade);
+        printf("Ingrese la edad de la persona %d: ", i + 1);
+        scanf("%d", &edad);
         
-        Pessoa *pessoa_dinamica = criar_pessoa(nome, idade); 
-        vetor[i] = pessoa_dinamica;
+        Persona *persona_dinamica = crear_persona(nombre, edad); 
+        vector[i] = persona_dinamica;
     }
 }
 
-Pessoa** criar_vetor_dinamico(int tamanho_vetor) {
-  Pessoa **vetor = (Pessoa**) malloc(tamanho_vetor * sizeof(Pessoa*));
-  return vetor;
+Persona** crear_vector_dinamico(int tamano_vector) {
+  Persona **vector = (Persona**) malloc(tamano_vector * sizeof(Persona*));
+  return vector;
 }
 
-void desalocar_vetor(Pessoa*** endereco_vetor, int tamanho_vetor) {  
-    Pessoa** vetor = *endereco_vetor;
-    for (int i = 0; i < tamanho_vetor; i++) {
-        free(vetor[i]);
-        vetor[i] = NULL;
+void desalojar_vector(Persona*** direccion_vector, int tamano_vector) {  
+    Persona** vector = *direccion_vector;
+    for (int i = 0; i < tamano_vector; i++) {
+        free(vector[i]);
+        vector[i] = NULL;
     }
-    free(vetor);
-    *endereco_vetor = NULL;
+    free(vector);
+    *direccion_vector = NULL;
 }
 
 int main() {
 
-    int tamanho_vetor;
+    int tamano_vector;
 
-    printf("\n --- VETOR DE PONTEIROS PARA STRUCT --- \n");
+    printf("\n --- VECTOR DE PUNTEROS A ESTRUCTURAS --- \n");
 
-    printf("Informe a quantidade de elementos: ");
-    scanf("%d", &tamanho_vetor);
+    printf("Informe la cantidad de elementos: ");
+    scanf("%d", &tamano_vector);
       
-    Pessoa** vetor = criar_vetor_dinamico(tamanho_vetor);
+    Persona** vector = crear_vector_dinamico(tamano_vector);
 
-    preencher_vetor(vetor, tamanho_vetor);
+    llenar_vector(vector, tamano_vector);
 
-    printf("\n --- PESSOAS CADASTRADAS --- \n");
-    imprimir_vetor(vetor, tamanho_vetor);
+    printf("\n --- PERSONAS REGISTRADAS --- \n");
+    imprimir_vector(vector, tamano_vector);
     
-    desalocar_vetor(&vetor, tamanho_vetor);
+    desalojar_vector(&vector, tamano_vector);
 
     return 0;
 }
