@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 /* 
-Um ponteiro para um ponteiro consiste em uma variável que guarda o endereço de outra, 
-essa outra por sua vez guarda o endereço da variável que tem um tipo de dado comum.
+Un puntero a un puntero consiste en una variable que guarda la direccion de otra, 
+esta otra a su vez guarda la direccion de la variable que tiene un tipo de dato comun.
 
-Assim, um ponteiro poderá apontar para outro ponteiro, que, por sua vez, 
-aponta para outro ponteiro, que aponta para um terceiro ponteiro e assim por diante.
+Asi, un puntero puede apuntar a otro puntero, que, a su vez, 
+apunta a otro puntero, que apunta a un tercer puntero y asi sucesivamente.
 */
-
 
 int main() {
 
