@@ -1,3 +1,6 @@
+/**
+ * Write a program to print the position of the smallest number of n numbers using arrays.
+ * */
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,3 +1,6 @@
+/**
+ * Write a program to find the mean of n numbers using arrays.
+ * */
 #include <stdio.h>
 #include <stdlib.h>
 
