@@ -62,7 +62,7 @@ void imprimir_lista(Nodo *ptr_nodo) {
  
 }
 
-int tamaño_lista(const Nodo *ptr_nodo) { 
+int tamano_lista(const Nodo *ptr_nodo) { 
     
     //TODO: Implementa esta funcion.
     return 0;
@@ -102,7 +102,7 @@ void agregar_inicio_lista(Nodo **ptr_ptr_nodo, int valor) {  //&l
 
 **ptr_ptr_nodo es un puntero de puntero para la estructura NODO, 
 almacena la direccion de memoria de la variable del tipo puntero 
-a NODO que está en la pila y almacena la direccion de memoria 
+a NODO que esta en la pila y almacena la direccion de memoria 
 del ultimo nodo/elemento de la lista. 
 
 **ptr_ptr_nodo = &lista;
