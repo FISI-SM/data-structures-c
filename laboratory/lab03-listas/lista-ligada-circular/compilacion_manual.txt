@@ -1,0 +1,8 @@
+# genera el archivo compilado app_main.o en la carpeta obj
+gcc -I include -Wall -Werror -c apps/app_main.c -o obj/app_main.o
+
+# genera el archivo compilado lista_enlazada_circular.o en la carpeta obj
+gcc -I include -Wall -Werror -c src/lista_enlazada_circular.c -o obj/lista_enlazada_circular.o
+
+# realiza el enlace generando el archivo ejecutable 
+gcc obj/app_main.o obj/lista_enlazada_circular.o -o bin/app_main.out
