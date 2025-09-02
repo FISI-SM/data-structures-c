@@ -36,7 +36,7 @@ void destruir_lista(Lista **ptr_ptr_lista) {
     
 }
 
-int tamaño_lista(Lista *ptr_lista) {
+int tamano_lista(Lista *ptr_lista) {
 
     //TODO: Implementa esta funcion.
     return -1;
