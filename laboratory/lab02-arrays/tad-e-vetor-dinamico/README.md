@@ -35,7 +35,7 @@ Los datos almacenados pueden ser manipulados solo por las operaciones/métodos.
 - Archivo .h: definición de los nuevos tipos de datos, prototipos de las funciones y variables globales;
 - Archivo .c: declaración de los nuevos tipos de datos e implementación de las funciones.
 
-![TAD](https://github.com/edersonschmeing/estrutura-de-dados-em-c-1/blob/main/tad-e-vetor-dinamico/tad.png)
+![TAD](tad.png)
 
 <!-- ### Patrones Creacionales
 
