@@ -1,9 +1,8 @@
-## Listas Ligadas
+## Listas Enlazadas
 
-Uma Lista Ligada é uma estrutura de dados linear não sequencial e é definida utilizando alocação dinâmica de memória, o acesso dos elementos é encadeado/ligado. Cada elemento da lista é alocado dinamicamente conforme os dados são adicionados dentro da lista, a medida que os dados são removidos a memória é liberada. O elemento é um ponteiro para uma estrutura(Strucs) contendo dois campos de informação: um campo de dados, que é utilizado para armazenar a informação, e um campo que indica o próximo elemento da lista. 
+Una Lista Enlazada es una estructura de datos lineal no secuencial y se define utilizando alocación dinámica de memoria, donde el acceso a los elementos está encadenado/ligado. Cada elemento de la lista se asigna dinámicamente conforme los datos se van añadiendo a la lista. A medida que los datos son eliminados, la memoria es liberada. Un elemento de la lista es un puntero a una estructura (struct) que contiene dos campos de información: un campo de datos, utilizado para almacenar la información, y un campo que indica el siguiente elemento de la lista.
 
 
-Lista Ligada Circular, Lista Ligada com Cabeça e Lista Duplamente Ligada são variações da Lista Ligada que tem por objetivo melhorar a eficiência da estrutura de dados.  
+Las variaciones de la Lista Enlazada, como Lista Enlazada Circular, Lista Enlazada con Cabeza y Lista Doblemente Enlazada, tienen como objetivo mejorar la eficiencia de esta estructura de datos.
 
 ---
-
