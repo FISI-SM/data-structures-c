@@ -2,7 +2,7 @@
 #include <stdlib.h> 
 #include <stdbool.h> 
 
-typedef struct no Nodo;
+typedef struct nodo Nodo;
 
 typedef struct lista Lista;
 
