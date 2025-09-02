@@ -1,34 +1,30 @@
-#include "lista_ligada.h"
+#include "lista_enlazada.h"
 #include <stdio.h>
 #include <stdlib.h> 
 
-
 int main() { 
     
-   printf("\n--- Lista Ligada ---\n\n");
-   
-   No *lista = criar_lista();
-
-   No *lista02 = criar_lista();
-   
+   printf("\n--- Lista Enlazada ---\n\n");
+   Nodo *lista = crear_lista();
+   Nodo *lista02 = crear_lista();
 
    imprimir_lista(lista);
 
-  // adicionar_inicio_lista(&lista, 10);
+  // agregar_inicio_lista(&lista, 10);
   // imprimir_lista(lista);
 
-  //  adicionar_inicio_lista(&lista, 33);
+  //  agregar_inicio_lista(&lista, 33);
   // imprimir_lista(lista);
 
-   adicionar_inicio_lista(&lista, 99);
+   agregar_inicio_lista(&lista, 99);
   // imprimir_lista(lista);
 
-   adicionar_inicio_lista(&lista, 17);
+   agregar_inicio_lista(&lista, 17);
   //  imprimir_lista(lista);
 
-  //adicionar_inicio_lista(&lista02, 1);
-  //adicionar_inicio_lista(&lista02, 2);
-  //adicionar_inicio_lista(&lista02, 3);
+  //agregar_inicio_lista(&lista02, 1);
+  //agregar_inicio_lista(&lista02, 2);
+  //agregar_inicio_lista(&lista02, 3);
 
   imprimir_lista(lista);
   imprimir_lista(lista02);
@@ -37,19 +33,15 @@ int main() {
 
   imprimir_lista(lista);
   imprimir_lista(lista02);
-  
- 
-  
-   remover_valor_lista(&lista, 99);
+
+   eliminar_valor_lista(&lista, 99);
    imprimir_lista(lista);
    
-   adicionar_fim_lista(&lista, 44);
+   agregar_final_lista(&lista, 44);
    imprimir_lista(lista);
 
-   remover_fim_lista(&lista);
+   eliminar_final_lista(&lista);
    imprimir_lista(lista);
-
-
 
    return 0;
 
