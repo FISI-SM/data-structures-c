@@ -1,23 +1,22 @@
-#include "lista_ligada_com_cabeca.h"
+#include "lista_enlazada_con_cabeza.h"
 #include <stdio.h>
 #include <stdlib.h> 
 
-
 int main() { 
     
-   printf("\n--- Lista Ligada com Cabeça ---\n\n");
+   printf("\n--- Lista Enlazada con Cabeza ---\n\n");
 
-   Lista *lista = criar_lista();
+   Lista *lista = crear_lista();
 
    imprimir_lista(lista);
 
-   adicionar_inicio_lista(lista, 10);
-   adicionar_inicio_lista(lista, 33);
-   adicionar_inicio_lista(lista, 99);
+   agregar_inicio_lista(lista, 10);
+   agregar_inicio_lista(lista, 33);
+   agregar_inicio_lista(lista, 99);
    
    imprimir_lista(lista);
 
-   printf("%d \n", tamanho_lista(lista));
+   printf("%d \n", tamaño_lista(lista));
 
    destruir_lista(&lista);
    
