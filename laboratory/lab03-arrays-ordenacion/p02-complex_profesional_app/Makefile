@@ -38,6 +38,9 @@ $(BIN_DIR):
 run: all
 	@$(TARGET) add 1 2 3 4
 
+gdb: debug
+	gdb --args $(TARGET) add 1 2 3 4	
+
 debug: CFLAGS += -g -O0
 debug: clean all
 	@echo ">> Ejecuta: gdb $(TARGET)"
