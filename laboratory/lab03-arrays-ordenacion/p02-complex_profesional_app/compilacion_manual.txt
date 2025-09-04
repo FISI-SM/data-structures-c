@@ -1,0 +1,8 @@
+# Compilación manual sin Makefile:
+
+# 1) Compilar a objetos:
+gcc -Wall -Wextra -std=c11 -Iinclude -c src/complex.c -o obj/complex.o
+gcc -Wall -Wextra -std=c11 -Iinclude -c apps/app_main.c -o obj/app_main.o
+
+# 2) Enlazar:
+gcc obj/complex.o obj/app_main.o -o bin/complex_calc
