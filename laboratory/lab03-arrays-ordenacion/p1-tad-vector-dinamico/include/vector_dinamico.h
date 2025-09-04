@@ -1,25 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h> 
-#include <stdbool.h> 
+#ifndef VECTOR_DINAMICO_H
+#define VECTOR_DINAMICO_H
 
-//Especificacion de las operaciones de nuestro TAD.
-//crear, destruir, añadir, eliminar y buscar son operaciones basicas que podemos realizar en TAD. 
+#include <stdbool.h>
 
-typedef struct vector_dinamico Vector_Dinamico;
+typedef struct vd VD;
 
-Vector_Dinamico* crear_vector_dinamico(int tamano_vector, bool ordenado);
-void destruir_vector_dinamico(Vector_Dinamico **vector_dinamico_direccion);
+VD* crear_vd(int tamano_inicial, bool ordenado);
+void destruir_vd(VD **vd_direccion);
+void imprimir_vd(const VD *vd);
+void anadir_vd(VD *vd, int valor);
+int  buscar_vd(const VD *vd, int valor);
+int  acceder_vd(const VD *vd, int index);
+int  acceder_verificado_vd(const VD *vd, int index);
+void eliminar_vd(VD *vd, int index);
+int  tamano_vd(const VD *vd);
+int  cantidad_vd(const VD *vd);
 
-void imprimir_vector_dinamico(const Vector_Dinamico  *vector_dinamico);
-
-void anadir_vector_dinamico(Vector_Dinamico *vector_dinamico, int valor); // si ordenado=true utilizar este metodo
-
-int buscar_vector_dinamico(Vector_Dinamico *vector_dinamico, int valor); //para vectores ordenados, hacer búsqueda binaria
-
-int acceder_vector_dinamico(const Vector_Dinamico *vector_dinamico, int index);
-int acceder_verificado_vector_dinamico(const Vector_Dinamico *vector_dinamico, int index); // verifica si tiene elemento en el indice pasado.
-
-void eliminar_vector_dinamico(Vector_Dinamico *vector_dinamico, int index); // necesita ajustar los elementos del vector.
-
-int tamano_vector_dinamico(const Vector_Dinamico *vector_dinamico);
-int cantidad_vector_dinamico(const Vector_Dinamico *vector_dinamico);
+#endif

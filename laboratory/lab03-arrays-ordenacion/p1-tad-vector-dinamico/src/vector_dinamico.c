@@ -1,231 +1,105 @@
-#include "vector_dinamico.h" 
+#include "vector_dinamico.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>  
 
-// Interfaces no disponibles para nuestros clientes (quienes usan nuestra estructura), en este caso quienes usaran nuestro TAD.
-
-struct vector_dinamico {
-    bool ordenado;  // true indica que se quiere mantener el vector ordenado. 
-    int tamano;     // numero maximo de elementos que podemos almacenar en el vector.
-    int cantidad;   // cantidad actual de elementos almacenados.
-    int *datos;     // vector de enteros que representa nuestros datos. 
+struct vd {
+    bool ordenado;
+    int tamano;
+    int cantidad;
+    int *datos;
 };
 
-bool esta_lleno_vector_dinamico(Vector_Dinamico* vector_dinamico) {
-   
-    return (vector_dinamico->tamano == vector_dinamico->cantidad);
+static inline bool esta_lleno_vd(const VD *vd) { return vd->cantidad == vd->tamano; }
 
+static int agrandar(VD *vd) {
+    int nuevo = vd->tamano > 0 ? vd->tamano * 2 : 4;
+    int *p = (int*)realloc(vd->datos, (size_t)nuevo * sizeof(int));
+    if (!p) return -1;
+    vd->datos = p; vd->tamano = nuevo; return 0;
 }
 
-// Si el vector esta lleno, aumentamos 2 veces su tamano.
-void aumentar_vector_dinamico(Vector_Dinamico *vector_dinamico) {
-    
-    printf("Aumentando 2 veces el tamano actual del vector( 2 * %d )\n", vector_dinamico->tamano);
-
-    int *temp = vector_dinamico->datos; 
-    //vector_dinamico->tamano *= 2;
-    vector_dinamico->tamano = vector_dinamico->tamano * 2;
-
-    vector_dinamico->datos = (int*)calloc(vector_dinamico->tamano, sizeof(int)); 
-
-    for (int i = 0; i < vector_dinamico->tamano; i++ ) { 
-            vector_dinamico->datos[i] = temp[i];
+static int reducir_si_corresponde(VD *vd) {
+    if (vd->tamano >= 4 && vd->cantidad < vd->tamano / 4) {
+        int nuevo = vd->tamano / 2;
+        if (nuevo < 4) nuevo = 4;
+        if (vd->cantidad > nuevo) return 0;
+        int *p = (int*)realloc(vd->datos, (size_t)nuevo * sizeof(int));
+        if (!p) return -1;
+        vd->datos = p; vd->tamano = nuevo;
     }
-    free(temp);
-
+    return 0;
 }
 
-// Reducir el tamano del vector a la mitad cuando esté 1/4 o 25% lleno   
-void disminuir_vector_dinamico(Vector_Dinamico *vector_dinamico) {
-
-    if ((vector_dinamico->cantidad < vector_dinamico->tamano / 4) && 
-        (vector_dinamico->tamaño >= 4)) { 
-       
-        printf("Disminuyendo el tamano actual del vector a la mitad ( %d / 2 )\n", vector_dinamico->tamano); 
- 
-        int *temp = vector_dinamico->datos; 
-        vector_dinamico->tamano /= 2;
-        //vector_dinamico->tamano = vector_dinamico->tamano / 2;
-
-        vector_dinamico->datos = (int*)calloc(vector_dinamico->tamano, sizeof(int)); 
-
-        for (int j = 0; j < vector_dinamico->tamano; j++ ) { 
-            vector_dinamico->datos[j] = temp[j];
-        }
-        free(temp);
+static int busqueda_binaria_iterativa(const int *a, int n, int x) {
+    int i = 0, j = n - 1;
+    while (i <= j) {
+        int m = i + (j - i) / 2;
+        if (a[m] == x) return m;
+        if (a[m] < x) i = m + 1; else j = m - 1;
     }
-}
-
-int busqueda_binaria_iterativa_vector_dinamico(int *datos, int cantidad, int valor) {
-    
-    int inicio = 0, fin = cantidad - 1, index_medio;
-
-    while (inicio <= fin) { // mientras el vector tenga al menos 1 elemento.
-
-        index_medio = (inicio + fin) / 2;
-        if (datos[index_medio] == valor) 
-           return index_medio;
-        
-        else if (datos[index_medio] > valor)
-            fin = index_medio - 1;
-        
-        else 
-            inicio = index_medio + 1;
-    } 
-    return -1;
-}    
-
-int busqueda_binaria_recursiva_vector_dinamico(int *datos, int limite_izquierda, int limite_derecha, int valor) {    
-    
-    int index_medio = (limite_izquierda + limite_derecha) / 2;
-
-    printf("%d\n", index_medio);
-
-    if (limite_izquierda > limite_derecha) //caso base 1
-       return -1;
-    
-    if (datos[index_medio] == valor) //caso base 2
-       return index_medio; 
-
-    else if (datos[index_medio] < valor)   
-       return busqueda_binaria_recursiva_vector_dinamico(datos, index_medio + 1, limite_derecha, valor);
-
-    else 
-       return busqueda_binaria_recursiva_vector_dinamico(datos, limite_izquierda, index_medio - 1, valor);
-
     return -1;
 }
 
-int busqueda_secuencial_vector_dinamico(Vector_Dinamico *vector_dinamico, int valor) {    
-    
-    for (int i = 0; i < vector_dinamico->cantidad; i++) {
-        if (vector_dinamico->datos[i] == valor) 
-            return i; //retorna el indice del elemento.
-    }    
-    return -1; //caso no encuentre el elemento, retorna -1 con indice.
+static int busqueda_secuencial(const VD *vd, int x) {
+    for (int i = 0; i < vd->cantidad; ++i)
+        if (vd->datos[i] == x) return i;
+    return -1;
 }
 
-// Interfaces disponibles para nuestros clientes, en este caso quienes usaran nuestro TAD. 
-// Estan definidas en nuestro vector_dinamico.h
-
-Vector_Dinamico* crear_vector_dinamico(int tamano_vector, bool ordenado) {
-
-    Vector_Dinamico *vector_dinamico = (Vector_Dinamico*) malloc(sizeof(Vector_Dinamico));
-    vector_dinamico->ordenado = ordenado;
-    vector_dinamico->cantidad = 0;
-    vector_dinamico->tamano = tamaño_vector;
-    vector_dinamico->datos = (int*) calloc(tamano_vector, sizeof(int));
-    
-    return vector_dinamico;
-
+VD* crear_vd(int tamano_inicial, bool ordenado) {
+    if (tamano_inicial <= 0) tamano_inicial = 4;
+    VD *vd = (VD*)malloc(sizeof *vd);
+    if (!vd) return NULL;
+    vd->datos = (int*)calloc((size_t)tamano_inicial, sizeof(int));
+    if (!vd->datos) { free(vd); return NULL; }
+    vd->tamano = tamano_inicial; vd->cantidad = 0; vd->ordenado = ordenado;
+    return vd;
 }
 
-void destruir_vector_dinamico(Vector_Dinamico **vector_dinamico_direccion) {
-
-    Vector_Dinamico *vector_dinamico = *vector_dinamico_direccion;
-    free(vector_dinamico->datos);
-    free(vector_dinamico);
-    *vector_dinamico_direccion = NULL;
-
+void destruir_vd(VD **pp) {
+    if (!pp || !*pp) return; VD *vd = *pp;
+    free(vd->datos); free(vd); *pp = NULL;
 }
 
-void imprimir_vector_dinamico(const Vector_Dinamico *vector_dinamico) {
-
-    /*printf("indice = { ");       
-    for (int i = 0; i < vector_dinamico->cantidad; i++) {
-        printf("%i  ", i);
-        if (!(i == vector_dinamico->cantidad-1))
-            printf(",");
-    }    
-    printf("\n"); */
-
-    printf("vector(indice = valor) = { ");       
-    for (int i = 0; i < vector_dinamico->cantidad; i++) {
-        printf("%i = %d ", i, vector_dinamico->datos[i]);
-        //printf("%d  ", vector_dinamico->datos[i]); 
-        if (!(i == vector_dinamico->cantidad-1))
-            printf("| ");
+void imprimir_vd(const VD *vd) {
+    printf("vector(indice = valor) = { ");
+    for (int i = 0; i < vd->cantidad; ++i) {
+        printf("%d = %d", i, vd->datos[i]);
+        if (i + 1 < vd->cantidad) printf(" | ");
     }
-    printf(" } \n\n");
+    printf(" }\n");
 }
 
-void anadir_vector_dinamico(Vector_Dinamico *vector_dinamico, int valor) {
-
-    if (esta_lleno_vector_dinamico(vector_dinamico)) {
-               
-        aumentar_vector_dinamico(vector_dinamico);
-    
+void anadir_vd(VD *vd, int valor) {
+    if (esta_lleno_vd(vd)) {
+        if (agrandar(vd) != 0) { fprintf(stderr, "Error: no se pudo agrandar el vector.\n"); return; }
     }
-    if (vector_dinamico->ordenado) { //encontrar la posicion para insercion, desplazar los elementos hacia la derecha e insertar en la posicion. 
-
-        int i;
-        for (i = vector_dinamico->cantidad -1; i >= 0 && vector_dinamico->datos[i] > valor; i--)
-            vector_dinamico->datos[i+1] = vector_dinamico->datos[i];
-        
-        vector_dinamico->datos[i+1] = valor;
-        vector_dinamico->cantidad++;
-
-    } else { //inserta en la ultima posicion no ocupada
-      
-        vector_dinamico->datos[vector_dinamico->cantidad] = valor;
-        vector_dinamico->cantidad++;
-    }
-}
-
-int buscar_vector_dinamico(Vector_Dinamico *vector_dinamico, int valor) { 
-    
-    int index = -1; //-1 caso no encuentre el valor;
-    if (vector_dinamico->ordenado) {
-
-       //index = busqueda_binaria_recursiva_vector_dinamico(vector_dinamico->datos, 0, vector_dinamico->cantidad-1, valor); // retorna el indice del elemento
-       index = busqueda_binaria_iterativa_vector_dinamico(vector_dinamico->datos, vector_dinamico->cantidad, valor);
-
+    if (vd->ordenado) {
+        int i = vd->cantidad - 1;
+        while (i >= 0 && vd->datos[i] > valor) { vd->datos[i + 1] = vd->datos[i]; --i; }
+        vd->datos[i + 1] = valor; vd->cantidad++;
     } else {
-
-       index = busqueda_secuencial_vector_dinamico(vector_dinamico, valor); // retorna el índice del elemento 
-
-    }
-    return index;
-}
-
-void eliminar_vector_dinamico(Vector_Dinamico *vector_dinamico, int index) { 
-   
-    if (index >= 0 && index < vector_dinamico->cantidad) { 
-      
-        if (vector_dinamico->ordenado) { 
-            for (int i = index ; i < vector_dinamico->cantidad - 1; i++) {
-                vector_dinamico->datos[i] = vector_dinamico->datos[i + 1]; //mueve una posicion todos los elementos mayores que el elemento que fue eliminado
-            }
-            vector_dinamico->cantidad--; //decrementa la cantidad      
-      
-        } else {
-        
-            vector_dinamico->datos[index] = vector_dinamico->datos[vector_dinamico->cantidad - 1]; //mueve el ultimo elemento (cantidad -1) al lugar del elemento que fue eliminado
-            vector_dinamico->cantidad--; //decrementa la cantidad     
-        }
-    
-        disminuir_vector_dinamico(vector_dinamico);
+        vd->datos[vd->cantidad++] = valor;
     }
 }
 
-
-int acceder_vector_dinamico(const Vector_Dinamico *vector_dinamico, int index) {
-
-    return vector_dinamico->datos[index];
-} 
-
-int acceder_verificado_vector_dinamico(const Vector_Dinamico *vector_dinamico, int index) { // verifica si tiene elemento
-
-    if (index >= 0 && index < vector_dinamico->cantidad)
-       return vector_dinamico->datos[index];
-    return -1;
+int buscar_vd(const VD *vd, int valor) {
+    return vd->ordenado ? busqueda_binaria_iterativa(vd->datos, vd->cantidad, valor)
+                        : busqueda_secuencial(vd, valor);
 }
 
-int tamano_vector_dinamico(const Vector_Dinamico *vector_dinamico) {
-    return vector_dinamico->tamano;
+void eliminar_vd(VD *vd, int index) {
+    if (index < 0 || index >= vd->cantidad) return;
+    if (vd->ordenado) {
+        for (int i = index; i + 1 < vd->cantidad; ++i) vd->datos[i] = vd->datos[i + 1];
+        vd->cantidad--;
+    } else {
+        vd->datos[index] = vd->datos[vd->cantidad - 1]; vd->cantidad--;
+    }
+    if (reducir_si_corresponde(vd) != 0) fprintf(stderr, "Advertencia: no se pudo reducir el vector.\n");
 }
 
-int cantidad_vector_dinamico(const Vector_Dinamico *vector_dinamico) {
-    return vector_dinamico->cantidad;
-}
+int acceder_vd(const VD *vd, int index) { return vd->datos[index]; }
+int acceder_verificado_vd(const VD *vd, int index) { return (index >= 0 && index < vd->cantidad) ? vd->datos[index] : -1; }
+int tamano_vd(const VD *vd) { return vd->tamano; }
+int cantidad_vd(const VD *vd) { return vd->cantidad; }

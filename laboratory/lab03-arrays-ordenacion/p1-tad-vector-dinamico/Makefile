@@ -1,17 +1,49 @@
-all: app_main
+# === Configuracion ===
+CC       := gcc
+CFLAGS   := -Wall -Wextra -std=c11 -O2 -Iinclude
 
-app_main: app_main.o vector_dinamico.o  
-	gcc obj/app_main.o obj/vector_dinamico.o -o bin/app_main.out	
+APP_DIR  := apps
+SRC_DIR  := src
+OBJ_DIR  := obj
+BIN_DIR  := bin
 
-vector_dinamico.o: src/vector_dinamico.c include/vector_dinamico.h
-	gcc -I include -Wall -Werror -c src/vector_dinamico.c -o obj/vector_dinamico.o
+TARGET   := $(BIN_DIR)/app_vd
 
-app_main.o: apps/app_main.c include/vector_dinamico.h
-	gcc -I include -Wall -Werror -c apps/app_main.c -o obj/app_main.o
+SRCS := $(APP_DIR)/app_main.c $(SRC_DIR)/vector_dinamico.c
+OBJS := $(SRCS:$(APP_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJS := $(OBJS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-run:
-	./bin/app_main.out	
+.PHONY: all run clean distclean debug
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS) | $(BIN_DIR)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+	@echo ">> Generado: $@"
+
+$(OBJ_DIR)/%.o: $(APP_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(BIN_DIR):
+	@mkdir -p $(BIN_DIR)
+
+run: all
+	@$(TARGET)
+
+debug: CFLAGS += -g -O0
+debug: clean all
+	@echo ">> Ejecuta: gdb $(TARGET)"
 
 clean:
-	rm -f bin/app_main.out obj/*.o	
-#del /F /A bin\app_main.out obj\*.o 	
+	@rm -f $(OBJ_DIR)/*.o
+	@echo ">> Limpieza de objetos."
+
+distclean: clean
+	@rm -f $(TARGET)
+	@echo ">> Limpieza total (binario)."
