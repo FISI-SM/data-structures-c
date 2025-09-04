@@ -37,6 +37,8 @@ Los datos almacenados pueden ser manipulados solo por las operaciones/métodos.
 
 ![TAD](tad.png)
 
+
+![Vector Dinamico](vector-dinamico.png)
 <!-- ### Patrones Creacionales
 
 #### - Factory Method -->
