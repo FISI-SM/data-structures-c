@@ -1,36 +1,61 @@
+/**
+ * ------------------------------------------------------------
+ *   Programa: Búsqueda Binaria Recursiva
+ *
+ *   Descripción:
+ *   Este programa implementa el algoritmo de búsqueda binaria
+ *   de manera recursiva sobre un arreglo de enteros ordenado.
+ *
+ *   Funcionamiento:
+ *   - La función `busquedaBinariaRecursiva` recibe:
+ *       * arreglo: arreglo de enteros ordenados
+ *       * izquierda: índice inicial del rango de búsqueda
+ *       * derecha: índice final del rango de búsqueda
+ *       * objetivo: número a buscar en el arreglo
+ *
+ *   - En cada llamada:
+ *       1. Si izquierda > derecha → no se encontró el valor → retorna -1.
+ *       2. Si el valor está en la posición media → retorna ese índice.
+ *       3. Si el valor es mayor que el del medio → busca en la mitad derecha.
+ *       4. Si el valor es menor → busca en la mitad izquierda.
+ *
+ *   Ejemplo:
+ *   Arreglo: {1, 3, 5, 10, 20, 23, 30, 40, 50, 55}
+ *   Objetivo: 10
+ *   Resultado esperado: índice 3
+ * ------------------------------------------------------------
+ */
+
 #include <stdio.h>
 
-
-int busqueda_binaria_recursiva_vector_dinamico(int *datos, int limite_izquierda, int limite_derecha, int valor) {    
+int busquedaBinariaRecursiva(int *arreglo, int izquierda, int derecha, int objetivo) {    
     
-    int index_medio = (limite_izquierda + limite_derecha) / 2;
+    int medio = (izquierda + derecha) / 2;
 
-    printf("Indice del medio %d\n\n", index_medio);
+    printf("Índice del medio: %d\n\n", medio);
 
-    if (limite_izquierda > limite_derecha) //caso base 1
-       return -1;
+    if (izquierda > derecha) // caso base 1
+        return -1;
     
-    if (datos[index_medio] == valor) //caso base 2
-       return index_medio; 
+    if (arreglo[medio] == objetivo) // caso base 2
+        return medio; 
 
-    else if (datos[index_medio] < valor)   
-       return busqueda_binaria_recursiva_vector_dinamico(datos, index_medio + 1, limite_derecha, valor);
+    else if (arreglo[medio] < objetivo)   
+        return busquedaBinariaRecursiva(arreglo, medio + 1, derecha, objetivo);
 
     else 
-       return busqueda_binaria_recursiva_vector_dinamico(datos, limite_izquierda, index_medio - 1, valor);
-
-    return -1;
+        return busquedaBinariaRecursiva(arreglo, izquierda, medio - 1, objetivo);
 }
 
 int main() {
     
-    int elementos[10] = {1, 3, 5, 10, 20, 23, 30, 40, 50, 55};
+    int numeros[10] = {1, 3, 5, 10, 20, 23, 30, 40, 50, 55};
     
-    int valor = 10;
+    int objetivo = 10;
 
-    int index = busqueda_binaria_recursiva_vector_dinamico(elementos, 0, 9, valor);
+    int posicion = busquedaBinariaRecursiva(numeros, 0, 9, objetivo);
 
-    printf("valor buscado = %d | indice retornado = %d  \n\n", valor, index); 
+    printf("Valor buscado = %d | Índice retornado = %d\n\n", objetivo, posicion); 
 
     return 0;
 }
