@@ -1,4 +1,5 @@
 ## Revisar  
+Libro: Thomas H Cormen 
 
 1. **Direcciones de Variables**  
 2. **Punteros**  

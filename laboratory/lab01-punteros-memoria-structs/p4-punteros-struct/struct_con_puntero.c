@@ -7,7 +7,12 @@ int main() {
         int *p2;
     } Direccion;
     
+
+
     Direccion direccion;
+
+    int titta = sizeof(direccion);
+    printf("GOKU: %d\n", titta);
 
     int a = 10; 
     int b = 20;
