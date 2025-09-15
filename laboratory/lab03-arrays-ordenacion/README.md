@@ -73,3 +73,27 @@ make run
 ---
 
 ✅ Con esto puedes compilar y ejecutar tu proyecto sin problemas en ambos sistemas operativos.
+
+
+---
+
+## 🔹 4. Nota para usuarios de Git Bash en Windows
+Si estás usando **Git Bash** en lugar de MSYS2, no tendrás `make` disponible por defecto.  
+En su lugar, cuando instales MinGW, el comando suele llamarse:
+
+```bash
+mingw32-make
+```
+
+Por lo tanto, en Git Bash deberás compilar así:
+
+```bash
+mingw32-make
+```
+
+y ejecutar el programa normalmente con:
+
+```bash
+./programa.exe
+```
+
