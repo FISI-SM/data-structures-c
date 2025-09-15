@@ -72,12 +72,16 @@ void imprimir_vd(const VD *vd) {
 
 void anadir_vd(VD *vd, int valor) {
     if (esta_lleno_vd(vd)) {
-        if (agrandar(vd) != 0) { fprintf(stderr, "Error: no se pudo agrandar el vector.\n"); return; }
+        if (agrandar(vd) != 0) { 
+            fprintf(stderr, "Error: no se pudo agrandar el vector.\n"); 
+            return; 
+        }
     }
     if (vd->ordenado) {
         int i = vd->cantidad - 1;
         while (i >= 0 && vd->datos[i] > valor) { vd->datos[i + 1] = vd->datos[i]; --i; }
-        vd->datos[i + 1] = valor; vd->cantidad++;
+        vd->datos[i + 1] = valor; 
+        vd->cantidad++;
     } else {
         vd->datos[vd->cantidad++] = valor;
     }
