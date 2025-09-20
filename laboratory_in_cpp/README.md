@@ -1,28 +1,11 @@
-## Estructura de Datos en C - 2025-2
+## Estructura de Datos en CPP - 2025-2
 
 Este material presenta los códigos fuentes utilizados como ejemplos en la disciplina de Estrutura de Datos de la escuela de Ciencias de Computación UNMSM. 
 
 **Profesor:** Herminio Paucar
 
 
-# Contenido del Curso de Estructuras de Datos en C
-
-### Lab01
-1. **Direcciones de Variables**  
-2. **Punteros**  
-3. **Punteros y Funciones**  
-4. **Punteros y Struct**  
-5. **Punteros y Arreglos**  
-6. **Asignación Dinámica de Memoria**  
-
-### Lab02
-7. **Funciones Recursivas** 
-
-### Lab03
-8. **TAD y Vectores Dinámicos**  
-9. **Algoritmos de Ordenación**  
-10. **Heap Binario - Heap Sort**  
-11. **Búsqueda Secuencial y Búsqueda Binaria**  
+# Contenido del Curso de Estructuras de Datos en CPP
 
 ### Lab04
 12. **Lista enlazada**  
