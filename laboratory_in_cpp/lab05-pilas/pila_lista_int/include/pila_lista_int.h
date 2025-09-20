@@ -8,53 +8,27 @@ using namespace std;
 struct NodoPila {
     int dato;
     NodoPila* sig;
-    NodoPila(int v) : dato(v), sig(nullptr) {}
+    NodoPila(int v);
 };
 
 struct PilaListaInt {
     NodoPila* tope;
     int n;
 
-    PilaListaInt() : tope(nullptr), n(0) {}
-    ~PilaListaInt() { clear(); }
+    PilaListaInt();
+    ~PilaListaInt();
 
-    bool empty() const { return tope == nullptr; }
-    int  size()  const { return n; }
+    bool empty() const;
+    int  size()  const;
 
-    void push(int x) {
-        NodoPila* nuevo = new NodoPila(x);
-        nuevo->sig = tope;
-        tope = nuevo;
-        ++n;
-    }
+    void push(int x);
+    void pop();
 
-    void pop() {
-        if (empty()) throw runtime_error("pop() en pila vacia");
-        NodoPila* viejo = tope;
-        tope = tope->sig;
-        delete viejo;
-        --n;
-    }
+    int& top();
+    const int& top() const;
 
-    int& top() {
-        if (empty()) throw runtime_error("top() en pila vacia");
-        return tope->dato;
-    }
-
-    const int& top() const {
-        if (empty()) throw runtime_error("top() en pila vacia");
-        return tope->dato;
-    }
-
-    void clear() {
-        while (!empty()) pop();
-    }
-
-    void imprimir() const {
-        cout << "PilaListaInt[top->bottom]: ";
-        for (NodoPila* cur = tope; cur; cur = cur->sig) cout << cur->dato << " ";
-        cout << "\n";
-    }
+    void clear();
+    void imprimir() const;
 };
 
 #endif
