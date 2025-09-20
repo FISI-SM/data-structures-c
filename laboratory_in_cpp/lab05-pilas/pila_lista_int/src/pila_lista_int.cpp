@@ -1,39 +1,45 @@
 #include "pila_lista_int.h"
 
 // =================== NodoPila ===================
-NodoPila::NodoPila(int v) : dato(v), sig(nullptr) {}
+NodoPila::NodoPila(int v): dato(v), sig(nullptr) {}
 
 // =================== PilaListaInt ===================
-PilaListaInt::PilaListaInt() : tope(nullptr), n(0) {}
+PilaListaInt::PilaListaInt(): tope(nullptr), n(0) {}
 
-PilaListaInt::~PilaListaInt() { clear(); }
+PilaListaInt::~PilaListaInt() {
+    clear();
+}
 
-bool PilaListaInt::empty() const { return tope == nullptr; }
-int  PilaListaInt::size()  const { return n; }
+bool PilaListaInt::empty() const {
+    return tope == nullptr;
+}
+int PilaListaInt::size() const {
+    return n;
+}
 
 void PilaListaInt::push(int x) {
-    NodoPila* nuevo = new NodoPila(x);
-    nuevo->sig = tope;
+    NodoPila * nuevo = new NodoPila(x);
+    nuevo -> sig = tope;
     tope = nuevo;
     ++n;
 }
 
 void PilaListaInt::pop() {
     if (empty()) throw runtime_error("pop() en pila vacia");
-    NodoPila* viejo = tope;
-    tope = tope->sig;
+    NodoPila * viejo = tope;
+    tope = tope -> sig;
     delete viejo;
     --n;
 }
 
-int& PilaListaInt::top() {
+int & PilaListaInt::top() {
     if (empty()) throw runtime_error("top() en pila vacia");
-    return tope->dato;
+    return tope -> dato;
 }
 
-const int& PilaListaInt::top() const {
+const int & PilaListaInt::top() const {
     if (empty()) throw runtime_error("top() en pila vacia");
-    return tope->dato;
+    return tope -> dato;
 }
 
 void PilaListaInt::clear() {
@@ -42,8 +48,8 @@ void PilaListaInt::clear() {
 
 void PilaListaInt::imprimir() const {
     cout << "PilaListaInt[top->bottom]: ";
-    for (NodoPila* cur = tope; cur; cur = cur->sig) {
-        cout << cur->dato << " ";
+    for (NodoPila * cur = tope; cur; cur = cur -> sig) {
+        cout << cur -> dato << " ";
     }
     cout << "\n";
 }

@@ -1,6 +1,9 @@
 #include "lista_enlazada.h"
 
 // Insertar al inicio
+// En C++ hay una regla de oro:
+// 🔹 Cada "new" debe tener un "delete" correspondiente
+// 🔹 Cada new[] debe tener un delete[] correspondiente
 void Lista::insertarInicio(int valor) {
     Nodo* nuevo = new Nodo(valor);
     nuevo->sig = cabeza;
