@@ -1,0 +1,1 @@
+// Implementación mayormente en header.
