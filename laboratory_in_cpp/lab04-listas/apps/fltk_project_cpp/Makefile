@@ -1,26 +1,26 @@
-# Proyecto FLTK en C++ con estructura apps/, src/, include/, obj/, bin/
+# FLTK C++ — estructura solicitada
 CXX = g++
 CXXFLAGS = -Iinclude -Wall -g $(shell fltk-config --cxxflags)
-LDFLAGS = $(shell fltk-config --ldflags)
+LDFLAGS  = $(shell fltk-config --ldflags)
 
-SRC_DIR = src
 APP_DIR = apps
+SRC_DIR = src
+INC_DIR = include
 OBJ_DIR = obj
 BIN_DIR = bin
-INC_DIR = include
 
-OBJS = $(OBJ_DIR)/gui_music.o $(OBJ_DIR)/app_main.o
-TARGET = $(BIN_DIR)/gui_music_fltk_cpp
+TARGET = $(BIN_DIR)/app_lista
+OBJS = $(OBJ_DIR)/app_main.o $(OBJ_DIR)/lista_enlazada.o
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS) | $(BIN_DIR)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
-$(OBJ_DIR)/gui_music.o: $(SRC_DIR)/gui_music.cpp $(INC_DIR)/gui_music.hpp | $(OBJ_DIR)
+$(OBJ_DIR)/app_main.o: $(APP_DIR)/app_main.cpp $(INC_DIR)/lista_enlazada.h | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/app_main.o: $(APP_DIR)/app_main.cpp $(INC_DIR)/gui_music.hpp | $(OBJ_DIR)
+$(OBJ_DIR)/lista_enlazada.o: $(SRC_DIR)/lista_enlazada.cpp $(INC_DIR)/lista_enlazada.h | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
@@ -32,4 +32,7 @@ $(BIN_DIR):
 clean:
 	rm -f $(OBJ_DIR)/*.o $(TARGET)
 
-.PHONY: all clean
+run: all
+	./$(TARGET)
+
+.PHONY: all clean run

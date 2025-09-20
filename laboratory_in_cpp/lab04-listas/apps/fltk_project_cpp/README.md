@@ -1,38 +1,47 @@
-# GUI Music (FLTK, C++) — Estructura Makefile
+# Reproductor (FLTK + C++) — Lista enlazada simple
 
-Estructura:
+Estructura solicitada:
 ```
-apps/        -> app_main.cpp (FLTK + GUI)
-src/         -> gui_music.cpp (lista simple en C++)
-include/     -> gui_music.hpp (API C++)
-obj/         -> objetos .o
-bin/         -> binarios
+apps/
+ └── app_main.cpp
+bin/
+ └── app_lista
+include/
+ └── lista_enlazada.h
+obj/
+ ├── app_main.o
+ └── lista_enlazada.o
+src/
+ └── lista_enlazada.cpp
 Makefile
+README.md
 ```
 
-## Requisitos (Ubuntu/Debian)
+## Requisitos
+
+### Ubuntu/Debian
 ```
 sudo apt-get update
 sudo apt-get install build-essential fltk1.3-dev
 ```
-(`fltk1.3-dev` instala `fltk-config` que se usa en el Makefile).
+
+### Windows (MSYS2 MINGW64)
+```
+pacman -Syu
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-fltk make
+```
 
 ## Compilar
 ```
 make
 ```
-El ejecutable se genera en `bin/gui_music_fltk_cpp`.
+Genera `bin/app_lista` (o `bin/app_lista.exe`).
 
 ## Ejecutar
 ```
-./bin/gui_music_fltk_cpp
+./bin/app_lista
 ```
 
-## Windows (MSYS2 Mingw64)
-```
-pacman -Syu
-pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-fltk
-mingw32-make
-./bin/gui_music_fltk_cpp.exe
-```
-(Asegúrate de estar en la terminal **MSYS2 MINGW64** y que `fltk-config` esté en PATH).
+## Notas
+- Navegación no circular (izquierda/derecha solo si hay anterior/siguiente).
+- Toda la lógica de la lista está encapsulada en `struct ListaEnlazada` con funciones miembro.
