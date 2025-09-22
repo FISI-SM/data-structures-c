@@ -1,9 +1,15 @@
 #include "lista_enlazada.h"
 
 int main() {
+
+    // Crear la lista en el heap, es necesario hacer un "delete"
+    //Lista* lista = new Lista();
+    //lista->insertarInicio(10); //modo de uso "->"
+
+    // Crear la lista en el Stack, solo persiste en el ambito {}
     Lista lista;
 
-    lista.insertarInicio(10);
+    lista.insertarInicio(10); //modo de uso "."
     lista.insertarInicio(20);
     lista.insertarFinal(30);
     lista.insertarFinal(40);

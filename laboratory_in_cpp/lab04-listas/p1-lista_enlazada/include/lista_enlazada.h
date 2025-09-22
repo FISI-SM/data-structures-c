@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-// Nodo con constructor usando "{}"
+// Nodo con constructor
 struct Nodo {
     int dato;
     Nodo* sig;
@@ -18,16 +18,27 @@ struct Nodo {
 // Lista enlazada simple
 struct Lista {
     Nodo* cabeza;
+    int tam;
 
-    Lista() { cabeza = nullptr; }
+    // Constructor
+    Lista() {
+        cabeza = nullptr;
+        tam = 0;
+    }
 
+    // Métodos
     void insertarInicio(int valor);
     void insertarFinal(int valor);
     void eliminar(int valor);
     Nodo* buscar(int valor);
     void imprimir();
     void liberar();
+    int tamano();
+    void AdicionaAPosición(int dato, int posicion);
+    int RetiraDePosicion(int posicion) {
 
+
+    // Destructor
     ~Lista() { liberar(); }
 };
 
