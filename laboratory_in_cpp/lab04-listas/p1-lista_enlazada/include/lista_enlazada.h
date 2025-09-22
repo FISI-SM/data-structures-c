@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-// Nodo con constructor
+// Nodo con constructor usando "{}"
 struct Nodo {
     int dato;
     Nodo* sig;
@@ -18,7 +18,7 @@ struct Nodo {
 // Lista enlazada simple
 struct Lista {
     Nodo* cabeza;
-    int tam;
+    int tam;   // contador de elementos
 
     // Constructor
     Lista() {
@@ -26,19 +26,20 @@ struct Lista {
         tam = 0;
     }
 
-    // Métodos
+    // ---- Declaraciones que usas en el .cpp ----
     void insertarInicio(int valor);
     void insertarFinal(int valor);
     void eliminar(int valor);
     Nodo* buscar(int valor);
     void imprimir();
     void liberar();
-    int tamano();
-    void AdicionaAPosición(int dato, int posicion);
-    int RetiraDePosicion(int posicion) {
 
+    int tamano();  // <- usado en tu .cpp
 
-    // Destructor
+    // Nuevos que agregaste en el .cpp
+    void AdicionaAPosicion(int dato, int posicion);
+    int  RetiraDePosicion(int posicion);
+
     ~Lista() { liberar(); }
 };
 

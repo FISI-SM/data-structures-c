@@ -1,0 +1,5 @@
+Notas del Makefile:
+- CC/CFLAGS: configuración de compilación.
+- Rutas separadas: apps/, src/, include/, obj/, bin/.
+- Reglas patrón para compilar .c -> .o desde apps/ y src/.
+- Objetivos útiles: run (demostración), debug, clean, distclean.

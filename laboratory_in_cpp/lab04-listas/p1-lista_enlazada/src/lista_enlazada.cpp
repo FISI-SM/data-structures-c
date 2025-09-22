@@ -8,6 +8,7 @@ void Lista::insertarInicio(int valor) {
     tam++;   // aumentar tamaño
 }
 
+
 // Insertar al final
 void Lista::insertarFinal(int valor) {
     Nodo* nuevo = new Nodo(valor);
