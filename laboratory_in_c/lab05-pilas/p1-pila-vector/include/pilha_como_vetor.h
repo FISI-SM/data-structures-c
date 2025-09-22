@@ -2,18 +2,16 @@
 #include <stdlib.h> 
 #include <stdbool.h> 
 
+typedef struct pila Pila;
 
-typedef struct pilha Pilha;
+Pila* crear_pila(int tamaño);
+void destruir_pila(Pila **pila);
 
-Pilha* criar_pilha(int tamanho);
-void destruir_pilha(Pilha **pilha);
+void apilar_pila(Pila *pila, int valor);
 
-void empilhar_pilha(Pilha *pilha, int valor);
+void desapilar_pila(Pila *pila);
 
-void desempilhar_pilha(Pilha *pilha);
+int tamaño_pila(const Pila *pila);
+int cantidad_pila(const Pila *pila);
 
-int tamanho_pilha(const Pilha *pilha);
-int quantidade_pilha(const Pilha *pilha);
-
-void imprimir_pilha(const Pilha  *pilha);
-
+void imprimir_pila(const Pila *pila);
