@@ -1,35 +1,32 @@
-#include "pilha_como_lista_ligada.h" 
+#include "pila_como_lista_enlazada.h"
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 
+int main() {
 
-int main() { 
-    
-   printf("\n--- Pilha como Lista Ligada ---\n\n");
-   
-   No *pilha = criar_pilha();
+   printf("\n--- Pila como Lista Enlazada ---\n\n");
 
-   imprimir_pilha(pilha);
+   Nodo *pila = crear_pila();
 
-   empilhar_pilha(&pilha, 10);
-   imprimir_pilha(pilha);
+   imprimir_pila(pila);
 
-   empilhar_pilha(&pilha, 33);
-   imprimir_pilha(pilha);
+   apilar_pila(&pila, 10);
+   imprimir_pila(pila);
 
-   empilhar_pilha(&pilha, 99);
-   imprimir_pilha(pilha);
+   apilar_pila(&pila, 33);
+   imprimir_pila(pila);
 
-   empilhar_pilha(&pilha, 17);
-   imprimir_pilha(pilha);
-  
-   empilhar_pilha(&pilha, 44);
-   imprimir_pilha(pilha);
+   apilar_pila(&pila, 99);
+   imprimir_pila(pila);
 
-   desempilhar_pilha(&pilha); //precisa implementar
-   imprimir_pilha(pilha);
+   apilar_pila(&pila, 17);
+   imprimir_pila(pila);
 
+   apilar_pila(&pila, 44);
+   imprimir_pila(pila);
+
+   desapilar_pila(&pila); // necesita implementar
+   imprimir_pila(pila);
 
    return 0;
-
 }
