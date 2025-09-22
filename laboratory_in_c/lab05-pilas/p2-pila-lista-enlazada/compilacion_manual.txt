@@ -1,0 +1,8 @@
+# Genera el archivo compilado app_main.o en la carpeta obj
+gcc -I include -Wall -Werror -c apps/app_main.c -o obj/app_main.o
+
+# Genera el archivo compilado pila_como_lista_enlazada.o en la carpeta obj
+gcc -I include -Wall -Werror -c src/pila_como_lista_enlazada.c -o obj/pila_como_lista_enlazada.o
+
+# Hace el enlace (linking) generando el archivo ejecutable
+gcc obj/app_main.o obj/pila_como_lista_enlazada.o -o bin/app_main.out
