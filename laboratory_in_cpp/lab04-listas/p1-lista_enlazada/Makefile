@@ -10,7 +10,7 @@ BIN_DIR = bin
 
 # Archivos
 OBJS   = $(OBJ_DIR)/lista_enlazada.o $(OBJ_DIR)/app_main.o
-TARGET = $(BIN_DIR)/app_lista
+TARGET = $(BIN_DIR)/app_lista.exe
 
 .PHONY: all clean run
 
