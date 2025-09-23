@@ -8,6 +8,21 @@ void Lista::insertarInicio(int valor) {
     tam++;   // aumentar tamaño
 }
 
+// Retira de la primera posicion y devuelve el valor retirado
+int Lista::retirarDeInicio(){
+    if (!cabeza) {
+        cout << "La lista está vacía\n";
+        return -1;
+    }
+
+    Nodo* temp = cabeza;
+    cabeza = cabeza->sig;    
+    int valor = temp->dato;
+    delete temp;
+    tam--;   // disminuir tamaño
+
+    return valor;
+}
 
 // Insertar al final
 void Lista::insertarFinal(int valor) {
@@ -67,6 +82,7 @@ void Lista::imprimir() {
     cout << "NULL\n";
 }
 
+
 // Liberar memoria, eliminar la lista
 void Lista::liberar() {
     Nodo* temp = cabeza;
@@ -84,7 +100,7 @@ int Lista::tamano() {
     return tam;
 }
 
-// Nuevo método: insertar en una posición específica
+// Nueva operación: insertar en una posición específica
 void Lista::AdicionaAPosicion(int dato, int posicion) {
     if (posicion <= 0) {
         insertarInicio(dato);
@@ -152,4 +168,13 @@ int Lista::RetiraDePosicion(int posicion) {
     tam--;   // disminuir tamaño
 
     return valor;
+}
+
+
+void Lista::AdicionarEnOrden(int dato){
+    //TODO
+
+    
+
+
 }

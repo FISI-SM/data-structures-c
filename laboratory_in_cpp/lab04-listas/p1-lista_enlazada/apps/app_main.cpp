@@ -21,6 +21,10 @@ int main() {
 
     lista.imprimir();
 
+    lista.retirarDeInicio();
+
+    lista.imprimir();
+
     //lista.eliminar(20);
     //lista.imprimir();
 /*
@@ -30,5 +34,6 @@ int main() {
     else
         cout << "No encontrado\n";
 */
+
     return 0;
 }

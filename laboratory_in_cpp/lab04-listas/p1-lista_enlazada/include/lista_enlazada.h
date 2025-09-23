@@ -28,6 +28,7 @@ struct Lista {
 
     // ---- Declaraciones que usas en el .cpp ----
     void insertarInicio(int valor);
+    int retirarDeInicio();
     void insertarFinal(int valor);
     void eliminar(int valor);
     Nodo* buscar(int valor);
@@ -39,6 +40,7 @@ struct Lista {
     // Nuevos que agregaste en el .cpp
     void AdicionaAPosicion(int dato, int posicion);
     int  RetiraDePosicion(int posicion);
+    void AdicionarEnOrden(int dato);
 
     ~Lista() { liberar(); }
 };
