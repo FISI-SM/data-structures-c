@@ -1,64 +1,63 @@
-#include "pilha_como_vetor.h"
+#include "pila_como_vector.h"
 #include <stdio.h>
 #include <stdlib.h> 
 
-
 int main() { 
     
-   printf("\n--- PILHA -  ---\n\n");
+   printf("\n--- PILA -  ---\n\n");
     
-   Pilha *pilha = criar_pilha(4);
+   Pila *pila = crear_pila(4);
 
-   imprimir_pilha(pilha);
-   printf("tamanho: %d\n", tamanho_pilha(pilha));
-   printf("quantidade: %d \n\n", quantidade_pilha(pilha));
+   imprimir_pila(pila);
+   printf("tamano: %d\n", tamano_pila(pila));
+   printf("cantidad: %d \n\n", cantidad_pila(pila));
 
-   empilhar_pilha(pilha, 13);
-   empilhar_pilha(pilha, 9);  
+   apilar_pila(pila, 13);
+   apilar_pila(pila, 9);  
   
-   imprimir_pilha(pilha);
-   printf("tamanho: %d\n", tamanho_pilha(pilha));
-   printf("quantidade: %d \n\n", quantidade_pilha(pilha));
+   imprimir_pila(pila);
+   printf("tamano: %d\n", tamaño_pila(pila));
+   printf("cantidad: %d \n\n", cantidad_pila(pila));
 
-   empilhar_pilha(pilha, 4);
-   empilhar_pilha(pilha, 2);  
+   apilar_pila(pila, 4);
+   apilar_pila(pila, 2);  
 
-   imprimir_pilha(pilha);
-   printf("tamanho: %d\n", tamanho_pilha(pilha));
-   printf("quantidade: %d \n\n", quantidade_pilha(pilha));
+   imprimir_pila(pila);
+   printf("tamano: %d\n", tamano_pila(pila));
+   printf("cantidad: %d \n\n", cantidad_pila(pila));
 
-   empilhar_pilha(pilha, 1);
-   empilhar_pilha(pilha, 10);
-   empilhar_pilha(pilha, 44);
-   empilhar_pilha(pilha, 33);
+   apilar_pila(pila, 1);
+   apilar_pila(pila, 10);
+   apilar_pila(pila, 44);
+   apilar_pila(pila, 33);
       
-   imprimir_pilha(pilha);
-   printf("tamanho: %d\n", tamanho_pilha(pilha));
-   printf("quantidade: %d \n\n", quantidade_pilha(pilha));
+   imprimir_pila(pila);
+   printf("tamano: %d\n", tamano_pila(pila));
+   printf("cantidad: %d \n\n", cantidad_pila(pila));
 
-   desempilhar_pilha(pilha);
-   desempilhar_pilha(pilha);
+   desapilar_pila(pila);
+   desapilar_pila(pila);
 
-   imprimir_pilha(pilha);
-   printf("tamanho: %d\n", tamanho_pilha(pilha));
-   printf("quantidade: %d \n\n", quantidade_pilha(pilha));
+   imprimir_pila(pila);
+   printf("tamano: %d\n", tamano_pila(pila));
+   printf("cantidad: %d \n\n", cantidad_pila(pila));
 
-   desempilhar_pilha(pilha);
-   desempilhar_pilha(pilha);
+   desapilar_pila(pila);
+   desapilar_pila(pila);
 
-   imprimir_pilha(pilha);
-   printf("tamanho: %d\n", tamanho_pilha(pilha));
-   printf("quantidade: %d \n\n", quantidade_pilha(pilha));
+   imprimir_pila(pila);
+   printf("tamano: %d\n", tamano_pila(pila));
+   printf("cantidad: %d \n\n", cantidad_pila(pila));
 
-   desempilhar_pilha(pilha);
-   desempilhar_pilha(pilha);
-   desempilhar_pilha(pilha);
+   desapilar_pila(pila);
+   desapilar_pila(pila);
+   desapilar_pila(pila);
 
-   imprimir_pilha(pilha);
-   printf("tamanho: %d\n", tamanho_pilha(pilha));
-   printf("quantidade: %d \n\n", quantidade_pilha(pilha));
+   imprimir_pila(pila);
+   printf("tamano: %d\n", tamano_pila(pila));
+   printf("cantidad: %d \n\n", cantidad_pila(pila));
  
-   destruir_pilha(&pilha);
+   destruir_pila(&pila);
    
    return 0;
 }
