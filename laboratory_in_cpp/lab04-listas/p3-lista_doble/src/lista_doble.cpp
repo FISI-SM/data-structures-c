@@ -4,7 +4,6 @@
 // ADICIONAR / INSERTAR
 // ======================
 
-// AdicionarAlInicioDoble(dato)  ← antes: insertarInicio
 void ListaDoble::AdicionarAlInicioDoble(int v) {
     Nodo* n = new Nodo(v);
     if (!cabeza) { cabeza = cola = n; return; }
@@ -13,7 +12,6 @@ void ListaDoble::AdicionarAlInicioDoble(int v) {
     cabeza = n;
 }
 
-// AdicionarDoble(dato)  ← (genérico: al final) antes: insertarFinal
 void ListaDoble::AdicionarDoble(int v) {
     Nodo* n = new Nodo(v);
     if (!cola) { cabeza = cola = n; return; }
@@ -35,8 +33,7 @@ void ListaDoble::AdicionarEnPosicionDoble(int v, int posicion) {
             cur->ant = n;
             return;
         }
-        if (!cur->sig) { // llegó al final antes de alcanzar la posición
-            AdicionarDoble(v);
+                    AdicionarDoble(v);
             return;
         }
     }
@@ -48,8 +45,7 @@ void ListaDoble::AdicionarEnOrdenDoble(int v) {
     if (v >= cola->dato) { AdicionarDoble(v); return; }
     Nodo* cur = cabeza->sig;
     while (cur && cur->dato < v) cur = cur->sig;
-    // insertar antes de cur
-    Nodo* n = new Nodo(v);
+        Nodo* n = new Nodo(v);
     n->ant = cur->ant;
     n->sig = cur;
     cur->ant->sig = n;
@@ -60,7 +56,6 @@ void ListaDoble::AdicionarEnOrdenDoble(int v) {
 // RETIRAR / ELIMINAR
 // ======================
 
-// RetiraDoInicioDuplo()  ← antes: eliminarInicio
 bool ListaDoble::RetiraDoInicioDuplo() {
     if (!cabeza) return false;
     Nodo* n = cabeza;
@@ -70,7 +65,6 @@ bool ListaDoble::RetiraDoInicioDuplo() {
     return true;
 }
 
-// RetiraDoble()  (genérico: del final) ← antes: eliminarFinal
 bool ListaDoble::RetiraDoble() {
     if (!cola) return false;
     Nodo* n = cola;
@@ -80,7 +74,6 @@ bool ListaDoble::RetiraDoble() {
     return true;
 }
 
-// RetiraEspecificoDoble(dato)  ← antes: eliminarValor
 bool ListaDoble::RetiraEspecificoDoble(int v) {
     Nodo* cur = cabeza;
     while (cur && cur->dato != v) cur = cur->sig;
@@ -151,3 +144,46 @@ void ListaDoble::liberar() {
     }
     cabeza = cola = nullptr;
 }
+
+
+// ======================
+// TESTE Y VERIFICACIÓN
+// ======================
+
+// ListaVaciaDoble()
+bool ListaDoble::ListaVaciaDoble() const {
+    return cabeza == nullptr;
+}
+
+// PosiciónDoble(dato)
+// Devuelve la posición (0-based) del primer elemento con el valor dado, o -1 si no existe
+int ListaDoble::PosicionDoble(int v) const {
+    int i = 0;
+    for (Nodo* cur = cabeza; cur; cur = cur->sig, ++i) {
+        if (cur->dato == v) return i;
+    }
+    return -1;
+}
+
+// ContieneDoble(dato)
+// Devuelve true si el dato está en la lista
+bool ListaDoble::ContieneDoble(int v) const {
+    return PosicionDoble(v) != -1;
+}
+
+// ======================
+// INICIALIZAR O BORRAR
+// ======================
+
+// CreaListaDoble()
+// Inicializa una lista vacía (equivalente a limpiar)
+void ListaDoble::CreaListaDoble() {
+    liberar();
+}
+
+// DestruyeListaDoble()
+// Libera toda la memoria y deja la lista vacía
+void ListaDoble::DestruyeListaDoble() {
+    liberar();
+}
+
