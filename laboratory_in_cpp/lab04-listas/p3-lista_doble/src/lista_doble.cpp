@@ -36,8 +36,8 @@ void ListaDoble::AdicionarEnPosicionDoble(int v, int posicion) {
                     AdicionarDoble(v);
             return;
         }
-    }
 }
+
 
 // AdicionarEnOrdenDoble(dato)  (inserta manteniendo orden ascendente)
 void ListaDoble::AdicionarEnOrdenDoble(int v) {
