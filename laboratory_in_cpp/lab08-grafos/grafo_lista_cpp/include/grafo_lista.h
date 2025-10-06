@@ -8,7 +8,12 @@ using namespace std;
 struct NodoAdj {
     int v;
     NodoAdj* sig;
-    NodoAdj(int vv);
+
+    // contructor
+    NodoAdj(int vv){
+        v = vv;
+        sig = nullptr;
+    }
 };
 
 // Grafo no ponderado usando LISTA DE ADYACENCIA (array de punteros)
@@ -17,7 +22,15 @@ struct GrafoLista {
     bool dirigido;
     NodoAdj** adj; // arreglo de tamaño n con cabezas de listas
 
-    GrafoLista(int n_, bool dirigido_ = false);
+    GrafoLista(int n_, bool dirigido_ = false) {
+        n = n_;
+        dirigido = dirigido_;
+        adj = new NodoAdj*[n];
+        for (int i = 0; i < n; ++i) {
+            adj[i] = nullptr;
+        }
+    }
+
     ~GrafoLista();
 
     void agregarArista(int u, int v);

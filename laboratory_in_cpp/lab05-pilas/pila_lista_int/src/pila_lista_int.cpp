@@ -1,11 +1,5 @@
 #include "pila_lista_int.h"
 
-// =================== NodoPila ===================
-NodoPila::NodoPila(int v): dato(v), sig(nullptr) {}
-
-// =================== PilaListaInt ===================
-PilaListaInt::PilaListaInt(): tope(nullptr), n(0) {}
-
 PilaListaInt::~PilaListaInt() {
     clear();
 }
@@ -25,7 +19,8 @@ void PilaListaInt::push(int x) {
 }
 
 void PilaListaInt::pop() {
-    if (empty()) throw runtime_error("pop() en pila vacia");
+    if (empty()) 
+        throw runtime_error("pop() en pila vacia");
     NodoPila * viejo = tope;
     tope = tope -> sig;
     delete viejo;
@@ -33,17 +28,20 @@ void PilaListaInt::pop() {
 }
 
 int & PilaListaInt::top() {
-    if (empty()) throw runtime_error("top() en pila vacia");
+    if (empty()) 
+        throw runtime_error("top() en pila vacia");
     return tope -> dato;
 }
 
 const int & PilaListaInt::top() const {
-    if (empty()) throw runtime_error("top() en pila vacia");
+    if (empty()) 
+        throw runtime_error("top() en pila vacia");
     return tope -> dato;
 }
 
 void PilaListaInt::clear() {
-    while (!empty()) pop();
+    while (!empty()) 
+        pop();
 }
 
 void PilaListaInt::imprimir() const {

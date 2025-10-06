@@ -8,12 +8,21 @@ using namespace std;
 struct NodoPila {
     int dato;
     NodoPila* sig;
-    NodoPila(int v);
+    NodoPila(int v) {
+        dato = v;
+        sig = nullptr;
+    }
 };
 
 struct PilaListaInt {
     NodoPila* tope;
     int n;
+
+    // Constructor
+    PilaListaInt() {
+        tope = nullptr;
+        n = 0;
+    }
 
     PilaListaInt();
     ~PilaListaInt();

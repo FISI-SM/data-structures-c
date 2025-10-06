@@ -1,16 +1,6 @@
 #include "grafo_lista.h"
 #include <queue>
 
-// ===== NodoAdj =====
-NodoAdj::NodoAdj(int vv) : v(vv), sig(nullptr) {}
-
-// ===== GrafoLista =====
-GrafoLista::GrafoLista(int n_, bool dirigido_)
-    : n(n_), dirigido(dirigido_) {
-    adj = new NodoAdj*[n];
-    for (int i = 0; i < n; ++i) adj[i] = nullptr;
-}
-
 GrafoLista::~GrafoLista() { liberar(); }
 
 void GrafoLista::agregarArista(int u, int v) {
