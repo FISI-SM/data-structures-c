@@ -26,6 +26,8 @@ sudo apt-get install build-essential fltk1.3-dev
 ```
 
 ### Windows (MSYS2 MINGW64)
+
+Open (search in windows start) the blue terminal called "MSYS2 MINGW64"
 ```
 pacman -Syu
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-fltk make
@@ -41,6 +43,12 @@ Genera `bin/app_lista` (o `bin/app_lista.exe`).
 ```
 ./bin/app_lista
 ```
+or
+```
+make run
+```
+
+
 
 ## Notas
 - Navegación no circular (izquierda/derecha solo si hay anterior/siguiente).
