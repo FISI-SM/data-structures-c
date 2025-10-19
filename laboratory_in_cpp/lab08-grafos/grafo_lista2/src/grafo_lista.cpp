@@ -1,5 +1,5 @@
 #include "grafo_lista.h"
-#include <queue>
+#include "cola.h"
 
 GrafoLista::~GrafoLista() { liberar(); }
 
@@ -7,12 +7,12 @@ void GrafoLista::agregarArista(int u, int v) {
     if (u < 0 || v < 0 || u >= n || v >= n) 
         return;
     // insertar al inicio de la lista de u
-    NodoAdj* a = new NodoAdj(v);
+    NodoGrafo* a = new NodoGrafo(v);
     a->sig = adj[u]; 
     adj[u] = a;
 
     if (!dirigido) {
-        NodoAdj* b = new NodoAdj(u);
+        NodoGrafo* b = new NodoGrafo(u);
         b->sig = adj[v]; 
         adj[v] = b;
     }
@@ -29,8 +29,8 @@ void GrafoLista::eliminarArista(int u, int v) {
 bool GrafoLista::existeArista(int u, int v) const {
     if (u < 0 || v < 0 || u >= n || v >= n) 
         return false;
-    for (NodoAdj* p = adj[u]; p; p = p->sig)
-        if (p->v == v) 
+    for (NodoGrafo* p = adj[u]; p; p = p->sig)
+        if (p->val == v) 
             return true;
 
     return false;
@@ -40,8 +40,8 @@ void GrafoLista::imprimir() const {
     cout << "Listas de adyacencia:\n";
     for (int u = 0; u < n; ++u) {
         cout << u << ": ";
-        for (NodoAdj* p = adj[u]; p; p = p->sig) {
-            cout << p->v << " -> ";
+        for (NodoGrafo* p = adj[u]; p; p = p->sig) {
+            cout << p->val << " -> ";
         }
         cout << "NULL\n";
     }
@@ -54,18 +54,21 @@ void GrafoLista::bfs(int s) const {
     for (int i = 0; i < n; ++i) 
         vis[i] = false;
 
-    queue<int> q;
+   
+    Cola Q;   
     vis[s] = true; 
-    q.push(s);
+    Q.push(s);
+
     cout << "BFS: ";
-    while (!q.empty()) {
-        int u = q.front(); q.pop();
+    while (!Q.empty()) {
+        int u = Q.front();
+        Q.pop();
         cout << u << " ";
-        for (NodoAdj* p = adj[u]; p; p = p->sig) {
-            int v = p->v;
+        for (NodoGrafo* p = adj[u]; p; p = p->sig) {
+            int v = p->val;
             if (!vis[v]) { 
                 vis[v] = true; 
-                q.push(v); 
+                Q.push(v); 
             }
         }
     }
@@ -89,9 +92,9 @@ void GrafoLista::liberar() {
     if (!adj) 
         return;
     for (int u = 0; u < n; ++u) {
-        NodoAdj* p = adj[u];
+        NodoGrafo* p = adj[u];
         while (p) { 
-            NodoAdj* nx = p->sig; 
+            NodoGrafo* nx = p->sig; 
             delete p; 
             p = nx; 
         }
@@ -102,10 +105,10 @@ void GrafoLista::liberar() {
 }
 
 // ===== privados =====
-void GrafoLista::eliminarDeLista(NodoAdj*& head, int v) {
-    NodoAdj* cur = head;
-    NodoAdj* prev = nullptr;
-    while (cur && cur->v != v) { 
+void GrafoLista::eliminarDeLista(NodoGrafo*& head, int v) {
+    NodoGrafo* cur = head;
+    NodoGrafo* prev = nullptr;
+    while (cur && cur->val != v) { 
         prev = cur; 
         cur = cur->sig; 
     }
@@ -121,8 +124,8 @@ void GrafoLista::eliminarDeLista(NodoAdj*& head, int v) {
 void GrafoLista::dfsRec(int u, bool* vis) const {
     vis[u] = true;
     cout << u << " ";
-    for (NodoAdj* p = adj[u]; p; p = p->sig) {
-        int v = p->v;
+    for (NodoGrafo* p = adj[u]; p; p = p->sig) {
+        int v = p->val;
         if (!vis[v]) 
             dfsRec(v, vis);
     }

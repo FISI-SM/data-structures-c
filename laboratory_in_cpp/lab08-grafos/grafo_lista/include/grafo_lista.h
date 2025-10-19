@@ -6,12 +6,12 @@ using namespace std;
 
 // Nodo para lista de adyacencia
 struct NodoAdj {
-    int v;
+    int val;
     NodoAdj* sig;
 
     // contructor
     NodoAdj(int vv){
-        v = vv;
+        val = vv;
         sig = nullptr;
     }
 };

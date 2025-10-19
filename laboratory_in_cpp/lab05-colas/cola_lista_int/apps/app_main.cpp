@@ -2,12 +2,17 @@
 
 int main() {
     ColaListaInt Q;
-    Q.push(10); Q.push(20); Q.push(30);
+    Q.push(10); 
+    Q.push(20); 
+    Q.push(30);
     Q.imprimir();
+    
     std::cout << "front=" << Q.front() << ", back=" << Q.back() << "\n";
 
-    Q.pop(); Q.imprimir();
-    Q.push(40); Q.push(50);
+    Q.pop(); 
+    Q.imprimir();
+    Q.push(40); 
+    Q.push(50);
     Q.imprimir();
 
     while (!Q.empty()) {
