@@ -26,7 +26,7 @@ int main(void) {
     int value;
 
     // Mostrar la expresión que se va a evaluar
-    printf("Expresión postfija: %s\n", expression);
+    printf("Expresion postfija: %s\n", expression);
 
     // Evaluar la expresión postfija
     if (!evaluate_postfix(expression, &value))
