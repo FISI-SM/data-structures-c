@@ -24,7 +24,6 @@ struct PilaListaInt {
         n = 0;
     }
 
-    PilaListaInt();
     ~PilaListaInt();
 
     bool empty() const;
