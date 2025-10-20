@@ -20,22 +20,32 @@ struct ListaDoble {
     Nodo* cabeza;
     Nodo* cola;
 
-    ListaDoble() { cabeza = nullptr; cola = nullptr; }
+    ListaDoble() { cabeza = cola = nullptr; }
 
-    void insertarInicio(int v);
-    void insertarFinal(int v);
-
-    bool eliminarInicio();
-    bool eliminarFinal();
-    bool eliminarValor(int v);
-
+    // --- Operaciones previas ---
+    void AdicionarAlInicioDoble(int v);
+    void AdicionarDoble(int v);
+    void AdicionarEnPosicionDoble(int v, int posicion);
+    void AdicionarEnOrdenDoble(int v);
+    bool RetiraDoInicioDuplo();
+    bool RetiraDoble();
+    bool RetiraEspecificoDoble(int v);
+    bool RetiraDeLaPosicionDoble(int posicion);
     Nodo* buscar(int v);
-    int   tamano() const;
-    void  imprimir() const;
-    void  imprimirReversa() const;
-    void  liberar();
+    int tamano() const;
+    void imprimir() const;
+    void imprimirReversa() const;
+    void liberar();
+
+    // --- NUEVAS operaciones ---
+    bool ListaVaciaDoble() const;
+    int PosicionDoble(int v) const;
+    bool ContieneDoble(int v) const;
+    void CreaListaDoble();
+    void DestruyeListaDoble();
 
     ~ListaDoble() { liberar(); }
 };
+
 
 #endif

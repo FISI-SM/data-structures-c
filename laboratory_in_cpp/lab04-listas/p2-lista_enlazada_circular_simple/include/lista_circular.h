@@ -20,6 +20,7 @@ struct Nodo {
 struct ListaCircular {
     Nodo* ultimo;  // si es nullptr, lista vacía. Si no, ultimo->sig es el "primero"
 
+    // constructor
     ListaCircular() { ultimo = nullptr; }
 
     // Inserciones
@@ -37,6 +38,7 @@ struct ListaCircular {
     void  imprimir() const;
     void  liberar();
 
+    //destructor
     ~ListaCircular() { liberar(); }
 };
 
