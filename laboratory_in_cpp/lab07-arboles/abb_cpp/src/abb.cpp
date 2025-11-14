@@ -1,7 +1,9 @@
 #include "abb.h"
 #include <stdexcept>
 
-void ABB::insertar(int v) { raiz = insertarRec(raiz, v); }
+void ABB::insertar(int v) { 
+    raiz = insertarRec(raiz, v); 
+}
 
 bool ABB::contiene(int v) const { return contieneRec(raiz, v); }
 
@@ -45,10 +47,14 @@ int ABB::altura() const { return alturaRec(raiz); }
 void ABB::liberar() { liberarRec(raiz); raiz = nullptr; }
 
 // ---- privados ----
+//{50, 30, 70, 20, 40, 60, 80}
 NodoABB* ABB::insertarRec(NodoABB* n, int v) {
-    if (!n) return new NodoABB(v);
-    if (v < n->dato) n->izq = insertarRec(n->izq, v);
-    else if (v > n->dato) n->der = insertarRec(n->der, v);
+    if (!n) 
+        return new NodoABB(v);
+    if (v < n->dato) 
+        n->izq = insertarRec(n->izq, v);
+    else if (v > n->dato) 
+        n->der = insertarRec(n->der, v);
     // si v == n->dato, ignorar o manejar duplicados (aquí los ignoramos)
     return n;
 }

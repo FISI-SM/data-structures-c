@@ -4,7 +4,8 @@ int main() {
     ABB T;
 
     // Insertar
-    for (int v : {50, 30, 70, 20, 40, 60, 80}) T.insertar(v);
+    for (int v : {50, 30, 70, 20, 40, 60, 80}) 
+        T.insertar(v);
 
     // Recorridos
     cout << "Inorden (ordenado): "; T.inorden();
