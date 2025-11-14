@@ -3,15 +3,19 @@
 int main() {
     ArbolBinario A;
 
-    // Insertar como árbol completo (por niveles). NO es ABB.
+    // Insertar como "árbol completo" (por niveles).
     for (int v : {10, 20, 30, 40, 50, 60, 70}) {
         A.insertarCompleto(v);
     }
 
-    cout << "Preorden: ";   A.preorden();
-    cout << "Inorden: ";    A.inorden();
-    cout << "Postorden: ";  A.postorden();
-    cout << "Por niveles: ";A.porNiveles();
+    cout << "Preorden: ";   
+    A.preorden();
+    cout << "Inorden: ";    
+    A.inorden();
+    cout << "Postorden: ";  
+    A.postorden();
+    cout << "Por niveles: ";
+    A.porNiveles();
 
     cout << "Altura: " << A.altura() << "\n";
     cout << "Nodos: "  << A.contarNodos() << "\n";

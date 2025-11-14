@@ -22,7 +22,9 @@ struct Nodo {
 struct ArbolBinario {
     Nodo* raiz;
 
-    ArbolBinario() { raiz = nullptr; }
+    ArbolBinario() { 
+        raiz = nullptr; 
+    }
 
     // Construcción manual (para demo): insertar como árbol completo por niveles
     // (NO es ABB). Inserta por el primer hueco en nivel-orden.
@@ -35,12 +37,12 @@ struct ArbolBinario {
     void porNiveles() const;
 
     // Métricas
-    int altura() const;        // número de niveles (árbol vacío = 0)
+    int altura() const;  // número de niveles (árbol vacío = 0)
     int contarNodos() const;
 
     // Transformaciones/Utilidades
-    void reflejar();           // espejo
-    void liberar();            // free total
+    void reflejar(); // espejo
+    void liberar();  // free total
 
     // Helpers privados
 private:

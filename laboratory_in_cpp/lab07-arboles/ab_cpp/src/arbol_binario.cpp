@@ -10,11 +10,21 @@ void ArbolBinario::insertarCompleto(int v) {
     queue<Nodo*> q;
     q.push(raiz);
     while (!q.empty()) {
-        Nodo* cur = q.front(); q.pop();
-        if (!cur->izq) { cur->izq = nuevo; return; }
-        else q.push(cur->izq);
-        if (!cur->der) { cur->der = nuevo; return; }
-        else q.push(cur->der);
+        Nodo* cur = q.front(); 
+        q.pop();
+        if (!cur->izq) { 
+            cur->izq = nuevo; 
+            return; 
+        }
+        else 
+            q.push(cur->izq);
+        
+        if (!cur->der) { 
+            cur->der = nuevo; 
+            return; 
+        }
+        else 
+           q.push(cur->der);
     }
 }
 
@@ -39,10 +49,13 @@ void ArbolBinario::porNiveles() const {
     queue<Nodo*> q;
     q.push(raiz);
     while (!q.empty()) {
-        Nodo* cur = q.front(); q.pop();
+        Nodo* cur = q.front(); 
+        q.pop();
         cout << cur->dato << " ";
-        if (cur->izq) q.push(cur->izq);
-        if (cur->der) q.push(cur->der);
+        if (cur->izq) 
+            q.push(cur->izq);
+        if (cur->der) 
+            q.push(cur->der);
     }
     cout << "\n";
 }
